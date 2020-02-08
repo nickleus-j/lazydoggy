@@ -6,7 +6,8 @@
         
     },
     GetExcuse: function (resultSelector) {
-        $.get("/Home/SampleExcuse", {}, function (data) {
+        $(resultSelector).text("Loading...");
+        $.get("/Home/GetRandomExcuse", {}, function (data) {
             $(resultSelector).text(data);
         });
     }

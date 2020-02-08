@@ -5,3 +5,7 @@
 /DaLazyDog/bin/Debug/netcoreapp2.2
 /.vs
 /DaLazyDog/obj
+/Lazydog.Model/obj
+/Lazydog.Model/bin/Debug/netstandard2.0
+/Lazydog.mysql/obj
+/Lazydog.mysql/bin/Debug/netstandard2.0
