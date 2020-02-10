@@ -40,5 +40,11 @@ namespace DaLazyDog.Controllers
             DbRepoFactory factory= HttpContext.RequestServices.GetService(typeof(DbRepoFactory)) as DbRepoFactory;
             return Content(factory.GetExcuseRepo().GetRandomExcuse());
         }
+        [HttpGet]
+        public IActionResult GetExcuse()
+        {
+            DbRepoFactory factory = HttpContext.RequestServices.GetService(typeof(DbRepoFactory)) as DbRepoFactory;
+            return Json(factory.GetExcuseRepo().GetAnExcuse());
+        }
     }
 }

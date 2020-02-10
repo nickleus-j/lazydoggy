@@ -13,7 +13,7 @@ namespace Lazydog.mysql
             this.ConnectionString = connectionString;
         }
 
-        public DbConnection GetConnection()
+        public MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);
         }

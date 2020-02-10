@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Lazydog.mysql;
-//using Lazydog.Model;
+using Lazydog.Model;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 
@@ -31,6 +31,27 @@ namespace Lazydog.mysql.Repo
                         
                     }
                 }
+                connection.Close();
+            }
+            return randomExcuse;
+        }
+        public Excuse GetAnExcuse()
+        {
+            Excuse randomExcuse =new Excuse();
+            using (connection)
+            {
+                connection.Open();
+                DbCommand cmd = new MySqlCommand("SELECT * FROM lazydog.excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        randomExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
+                        randomExcuse.ExcuseDescription= reader["ExcuseDescription"].ToString();
+                    }
+                }
+                connection.Close();
             }
             return randomExcuse;
         }
