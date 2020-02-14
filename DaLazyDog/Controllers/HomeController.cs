@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DaLazyDog.Models;
 using Lazydog.mysql;
+using Lazydog.Model;
+using Microsoft.Extensions.Logging;
 
 namespace DaLazyDog.Controllers
 {
@@ -37,14 +39,23 @@ namespace DaLazyDog.Controllers
         [HttpGet]
         public IActionResult GetRandomExcuse()
         {
-            DbRepoFactory factory= HttpContext.RequestServices.GetService(typeof(DbRepoFactory)) as DbRepoFactory;
+            DbRepoInstantiator factory= HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
             return Content(factory.GetExcuseRepo().GetRandomExcuse());
         }
         [HttpGet]
         public IActionResult GetExcuse()
         {
-            DbRepoFactory factory = HttpContext.RequestServices.GetService(typeof(DbRepoFactory)) as DbRepoFactory;
-            return Json(factory.GetExcuseRepo().GetAnExcuse());
+            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            Excuse givenExcuse = new Excuse();
+            try
+            {
+                givenExcuse = factory.GetExcuseRepo().GetAnExcuse();
+            }
+            catch (Exception ex) {
+       
+               
+            }
+            return Json(givenExcuse);
         }
     }
 }

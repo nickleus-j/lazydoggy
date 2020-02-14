@@ -5,11 +5,11 @@ using Lazydog.mysql.Repo;
 
 namespace Lazydog.mysql
 {
-    public class DbRepoFactory
+    public class DbRepoInstantiator
     {
         public string ConnectionString { get; set; }
-
-        public DbRepoFactory(string connectionString)
+        //public ILogger Logger;
+        public DbRepoInstantiator(string connectionString)
         {
             this.ConnectionString = connectionString;
         }

@@ -5,13 +5,15 @@ using Lazydog.mysql;
 using Lazydog.Model;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
+using Microsoft.Extensions.Logging;
 
 namespace Lazydog.mysql.Repo
 {
     public class ExcuseRepo
     {
         private DbConnection connection;
-        public ExcuseRepo(DbConnection _connection)
+        public ILogger Logger;
+        public ExcuseRepo(DbConnection _connection, ILogger givenLogger=null)
         {
             connection = _connection;
         }
@@ -38,22 +40,40 @@ namespace Lazydog.mysql.Repo
         public Excuse GetAnExcuse()
         {
             Excuse randomExcuse =new Excuse();
-            using (connection)
+            try
             {
-                connection.Open();
-                DbCommand cmd = new MySqlCommand("SELECT * FROM lazydog.excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
-
-                using (var reader = cmd.ExecuteReader())
+                using (connection)
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    DbCommand cmd = new MySqlCommand("SELECT * FROM lazydog.excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        randomExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
-                        randomExcuse.ExcuseDescription= reader["ExcuseDescription"].ToString();
+                        while (reader.Read())
+                        {
+                            randomExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
+                            randomExcuse.ExcuseDescription = reader["ExcuseDescription"].ToString();
+                        }
                     }
+                    connection.Close();
                 }
-                connection.Close();
+            }
+            catch(DbException dbEX)
+            {
+                Log(LogLevel.Error, "DB Issue \n"+dbEX.Message);
+            }
+            catch(Exception ex)
+            {
+                Log(LogLevel.Error, "Unknown Error details \n" + ex.Message);
             }
             return randomExcuse;
+        }
+        public void Log(LogLevel givenLogLevel,string msg)
+        {
+            if (Logger != null)
+            {
+                Logger.Log(givenLogLevel, msg);
+            }
         }
     }
 }
