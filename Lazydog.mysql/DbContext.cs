@@ -12,7 +12,10 @@ namespace Lazydog.mysql
         {
             this.ConnectionString = connectionString;
         }
-
+        /// <summary>
+        /// Creates an new Connection to a Mysql Database
+        /// </summary>
+        /// <returns>MySqlConnection</returns>
         public MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);

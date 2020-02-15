@@ -6,7 +6,9 @@ a.navbar-brand {
   text-align: center;
   word-break: break-all;
 }
-
+.hidden{
+    display:none;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

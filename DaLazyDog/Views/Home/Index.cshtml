@@ -1,12 +1,17 @@
-﻿@{
-    ViewData["Title"] = "The Lazy Dog";
-}
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["The Lazy Dog"];
 
+}
+<p class="hidden loading-text">@Localizer["Loading...."]</p>
 <div class="text-center excuse-panel">
-    <h1 class="display-4 text-primary">Welcome to the Lazy Dog</h1>
-    <a class="btn excuse-btn btn-primary text-white">Get Sample Excuse</a>
-    <hr />
-    <p><h2 class="excuse display-4"></h2></p>
+    <h1 class="display-4 text-primary">@Localizer["Welcome to the Lazy Dog"]</h1>
+    <a class="btn excuse-btn btn-primary text-white">
+        @Localizer["Get Some Excuse"]
+    </a>
+        <hr />
+        <p><h2 class="excuse display-4"></h2></p>
 </div>
 <div class="row">
     <div class="col-xs-12">
@@ -19,5 +24,6 @@
     <script type="text/javascript">
 
         Ajaxes.HomeInit();
+        Ajaxes.UiTexts.Loading = $("p.loading-text").text();
     </script>
 }
