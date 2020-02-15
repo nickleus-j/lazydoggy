@@ -9,7 +9,7 @@ namespace Lazydog.Model
     {
         [Display(Name = "Excuse")]
         public string ExcuseTitle { get; set; }
-        [Display(Name = "Excuse Description")]
+        [Display(Name = "Description")]
         public string ExcuseDescription { get; set; }
     }
 }
