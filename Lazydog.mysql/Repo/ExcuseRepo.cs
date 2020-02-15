@@ -23,7 +23,7 @@ namespace Lazydog.mysql.Repo
             using (connection)
             {
                 connection.Open();
-                DbCommand cmd = new MySqlCommand("SELECT * FROM lazydog.excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
+                DbCommand cmd = new MySqlCommand("SELECT * FROM excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
 
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -45,7 +45,7 @@ namespace Lazydog.mysql.Repo
                 using (connection)
                 {
                     connection.Open();
-                    DbCommand cmd = new MySqlCommand("SELECT * FROM lazydog.excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
+                    DbCommand cmd = new MySqlCommand("SELECT * FROM excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
 
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -60,11 +60,11 @@ namespace Lazydog.mysql.Repo
             }
             catch(DbException dbEX)
             {
-                Log(LogLevel.Error, "DB Issue \n"+dbEX.Message);
+                Log(LogLevel.Error, "ExcuseRepo.GetAnExcuse() Got a DB Issue \n"+dbEX.Message);
             }
             catch(Exception ex)
             {
-                Log(LogLevel.Error, "Unknown Error details \n" + ex.Message);
+                Log(LogLevel.Error, "ExcuseRepo.GetAnExcuse() Got an Unknown Error details \n" + ex.Message);
             }
             return randomExcuse;
         }

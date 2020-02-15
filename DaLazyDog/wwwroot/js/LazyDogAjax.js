@@ -13,7 +13,7 @@
         });
     },
     GetAnExcuse: function (resultSelector,descriptionSelector) {
-        
+        $(resultSelector).text("Loading...");
         $.get("/Home/GetExcuse", {}, function (data) {
             $(resultSelector).text(data.excuseTitle);
             $(descriptionSelector).text(data.excuseDescription);
