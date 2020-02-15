@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lazydog.Model;
+using Lazydog.mysql;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +14,10 @@ namespace DaLazyDog.Controllers
         // GET: Excuse
         public ActionResult Index()
         {
-            return View();
+            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IList<Excuse> givenExcuses = new List<Excuse>();
+            givenExcuses = factory.GetExcuseRepo().GetExcuses();
+            return View(givenExcuses);
         }
 
         // GET: Excuse/Details/5

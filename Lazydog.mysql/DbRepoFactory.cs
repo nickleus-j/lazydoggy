@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Lazydog.mysql.Repo;
+using Microsoft.Extensions.Logging;
 
 namespace Lazydog.mysql
 {
@@ -13,7 +14,7 @@ namespace Lazydog.mysql
         {
             this.ConnectionString = connectionString;
         }
-        public ExcuseRepo GetExcuseRepo()
+        public ExcuseRepo GetExcuseRepo(ILogger givenLogger = null)
         {
             DbContext dbContext = new DbContext(ConnectionString);
             return new ExcuseRepo(dbContext.GetConnection());

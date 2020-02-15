@@ -49,7 +49,8 @@ namespace DaLazyDog.Controllers
             Excuse givenExcuse = new Excuse();
             try
             {
-                givenExcuse = factory.GetExcuseRepo().GetAnExcuse();
+
+                givenExcuse = factory.GetExcuseRepo(Program.AppLogger).GetAnExcuse();
             }
             catch (Exception ex) {
        

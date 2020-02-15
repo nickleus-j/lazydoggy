@@ -68,6 +68,39 @@ namespace Lazydog.mysql.Repo
             }
             return randomExcuse;
         }
+        public IList<Excuse> GetExcuses()
+        {
+            IList<Excuse> Excuses = new List<Excuse>();
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    DbCommand cmd = new MySqlCommand("SELECT * FROM excuse", (MySqlConnection)connection);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Excuse givenExcuse = new Excuse();
+                            givenExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
+                            givenExcuse.ExcuseDescription = reader["ExcuseDescription"].ToString();
+                            Excuses.Add(givenExcuse);
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (DbException dbEX)
+            {
+                Log(LogLevel.Error, "ExcuseRepo.GetExcuses() Got a DB Issue \n" + dbEX.Message);
+            }
+            catch (Exception ex)
+            {
+                Log(LogLevel.Error, "ExcuseRepo.GetExcuses() Got an Unknown Error details \n" + ex.Message);
+            }
+            return Excuses;
+        }
         public void Log(LogLevel givenLogLevel,string msg)
         {
             if (Logger != null)
