@@ -16,6 +16,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ExcuseDescription)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Labels)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -27,6 +30,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExcuseDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Labels)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

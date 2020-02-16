@@ -11,5 +11,7 @@ namespace Lazydog.Model
         public string ExcuseTitle { get; set; }
         [Display(Name = "Description")]
         public string ExcuseDescription { get; set; }
+        [Display(Name = "Labels")]
+        public string Labels { get; set; }
     }
 }

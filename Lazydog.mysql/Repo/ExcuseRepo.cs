@@ -10,6 +10,11 @@ namespace Lazydog.mysql.Repo
 {
     public class ExcuseRepo
     {
+        #region
+        private string script_GetExcuseWithLabel = @"SELECT * FROM excuse 
+            WHERE trim(ExcuseLabels) LIKE CONCAT(@Lbl,'%') OR trim(ExcuseLabels) LIKE  CONCAT('%',@Lbl)";
+        private string script_GetRandomExcuse = "SELECT * FROM excuse order by RAND() LIMIT 1";
+        #endregion
         private DbConnection connection;
         public ILogger Logger;
         public ExcuseRepo(DbConnection _connection, ILogger givenLogger=null)
@@ -44,14 +49,13 @@ namespace Lazydog.mysql.Repo
                 using (connection)
                 {
                     connection.Open();
-                    DbCommand cmd = new MySqlCommand("SELECT * FROM excuse order by RAND() LIMIT 1", (MySqlConnection)connection);
+                    DbCommand cmd = new MySqlCommand(script_GetRandomExcuse, (MySqlConnection)connection);
 
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            randomExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
-                            randomExcuse.ExcuseDescription = reader["ExcuseDescription"].ToString();
+                            randomExcuse = GetExcuseFromReader(reader);
                         }
                     }
                     connection.Close();
@@ -81,9 +85,7 @@ namespace Lazydog.mysql.Repo
                     {
                         while (reader.Read())
                         {
-                            Excuse givenExcuse = new Excuse();
-                            givenExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
-                            givenExcuse.ExcuseDescription = reader["ExcuseDescription"].ToString();
+                            Excuse givenExcuse = GetExcuseFromReader(reader);
                             Excuses.Add(givenExcuse);
                         }
                     }
@@ -99,6 +101,45 @@ namespace Lazydog.mysql.Repo
                 Log(LogLevel.Error, "ExcuseRepo.GetExcuses() Got an Unknown Error details \n" + ex.Message);
             }
             return Excuses;
+        }
+        public IList<Excuse> GetExcuses(string label)
+        {
+            IList<Excuse> Excuses = new List<Excuse>();
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    DbCommand cmd = new MySqlCommand(script_GetExcuseWithLabel, (MySqlConnection)connection);
+                    cmd.Parameters.Add(new MySqlParameter( "@Lbl", label));
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Excuse givenExcuse = GetExcuseFromReader(reader);
+                            Excuses.Add(givenExcuse);
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (DbException dbEX)
+            {
+                Log(LogLevel.Error, "ExcuseRepo.GetExcuses() Got a DB Issue \n" + dbEX.Message);
+            }
+            catch (Exception ex)
+            {
+                Log(LogLevel.Error, "ExcuseRepo.GetExcuses() Got an Unknown Error details \n" + ex.Message);
+            }
+            return Excuses;
+        }
+        private Excuse GetExcuseFromReader(DbDataReader reader)
+        {
+            Excuse givenExcuse = new Excuse();
+            givenExcuse.ExcuseTitle = reader["ExcuseTitle"].ToString();
+            givenExcuse.ExcuseDescription = reader["ExcuseDescription"].ToString();
+            givenExcuse.Labels = reader["ExcuseLabels"].ToString();
+            return givenExcuse;
         }
         public void Log(LogLevel givenLogLevel,string msg)
         {
