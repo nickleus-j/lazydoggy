@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Lazydog.Model;
 using Lazydog.mysql;
 using Microsoft.AspNetCore.Http;
@@ -9,29 +8,29 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DaLazyDog.Controllers
 {
-    public class ExcuseController : Controller
+    public class CulturesController : Controller
     {
-        // GET: Excuse
+        // GET: Cultures
         public ActionResult Index()
         {
             DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
-            IList<Excuse> givenExcuses = factory.GetExcuseRepo().GetExcuses();
-            return View(givenExcuses);
+            IList<LocalizationCulture> Cultures = factory.GetCultureRepo(Program.AppLogger).GetSupportedCultures();
+            return View(Cultures);
         }
 
-        // GET: Excuse/Details/5
+        // GET: Cultures/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Excuse/Create
+        // GET: Cultures/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Excuse/Create
+        // POST: Cultures/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -48,13 +47,13 @@ namespace DaLazyDog.Controllers
             }
         }
 
-        // GET: Excuse/Edit/5
+        // GET: Cultures/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Excuse/Edit/5
+        // POST: Cultures/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -71,13 +70,13 @@ namespace DaLazyDog.Controllers
             }
         }
 
-        // GET: Excuse/Delete/5
+        // GET: Cultures/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Excuse/Delete/5
+        // POST: Cultures/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

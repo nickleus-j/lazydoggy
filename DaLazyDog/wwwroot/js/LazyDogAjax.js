@@ -4,7 +4,6 @@
     },
     HomeInit: function () {
         $(".excuse-btn").click(function (e) {
-          //  Ajaxes.GetExcuse(".excuse-panel .excuse");
             Ajaxes.GetAnExcuse(".excuse-panel .excuse","p.excuse-description");
         });
         

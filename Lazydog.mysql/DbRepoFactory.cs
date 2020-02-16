@@ -27,5 +27,15 @@ namespace Lazydog.mysql
             DbContext dbContext = new DbContext(ConnectionString);
             return new ExcuseRepo(dbContext.GetConnection());
         }
+        /// <summary>
+        /// Create new GetCultureRepo repository from Mysql DB
+        /// </summary>
+        /// <param name="givenLogger"></param>
+        /// <returns></returns>
+        public CultureRepo GetCultureRepo(ILogger givenLogger = null)
+        {
+            DbContext dbContext = new DbContext(ConnectionString);
+            return new CultureRepo(dbContext.GetConnection());
+        }
     }
 }

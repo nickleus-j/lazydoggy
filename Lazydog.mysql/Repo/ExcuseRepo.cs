@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Lazydog.mysql;
 using Lazydog.Model;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
@@ -76,7 +75,7 @@ namespace Lazydog.mysql.Repo
                 using (connection)
                 {
                     connection.Open();
-                    DbCommand cmd = new MySqlCommand("SELECT * FROM excuse", (MySqlConnection)connection);
+                    DbCommand cmd = new MySqlCommand("SELECT * FROM excuse ORDER BY ExcuseTitle", (MySqlConnection)connection);
 
                     using (var reader = cmd.ExecuteReader())
                     {
