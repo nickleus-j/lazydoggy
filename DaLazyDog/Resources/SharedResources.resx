@@ -123,4 +123,7 @@
   <data name="Localization" xml:space="preserve">
     <value>Localization</value>
   </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
 </root>

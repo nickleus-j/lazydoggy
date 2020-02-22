@@ -32,7 +32,11 @@
                 @Html.DisplayFor(modelItem => item.ExcuseDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Labels)
+                
+                @for (int ctr = 0; ctr < item.LabelArr.Length; ctr++)
+                {
+                    @Html.ActionLink(String.Format("{0} ", item.LabelArr[ctr]),"Category",new { category = item.LabelArr[ctr] })
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

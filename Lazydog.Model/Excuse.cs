@@ -13,5 +13,12 @@ namespace Lazydog.Model
         public string ExcuseDescription { get; set; }
         [Display(Name = "Labels")]
         public string Labels { get; set; }
+        public string[] LabelArr
+        {
+            get
+            {
+                return Labels!=null? Labels.Split(','):new string[1];
+            }
+        }
     }
 }

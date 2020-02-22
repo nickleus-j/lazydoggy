@@ -93,5 +93,11 @@ namespace DaLazyDog.Controllers
                 return View();
             }
         }
+        public ActionResult Category(string category)
+        {
+            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IList<Excuse> givenExcuses = factory.GetExcuseRepo().GetExcuses(category);
+            return View(nameof(Index),givenExcuses);
+        }
     }
 }

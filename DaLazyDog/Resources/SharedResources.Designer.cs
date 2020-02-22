@@ -77,5 +77,14 @@ namespace DaLazyDog.Resources {
                 return ResourceManager.GetString("Localization", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy.
+        /// </summary>
+        public static string Privacy {
+            get {
+                return ResourceManager.GetString("Privacy", resourceCulture);
+            }
+        }
     }
 }
