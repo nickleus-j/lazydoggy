@@ -6,7 +6,10 @@
 
 <h1>Index</h1>
 
-
+<p class="text-center">
+    <input type="text" class="form-control" id="searchTxt" />
+    <a class="btn btn-outline-dark search-btn">Search</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -23,27 +26,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExcuseTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExcuseDescription)
-            </td>
-            <td>
-                
-                @for (int ctr = 0; ctr < item.LabelArr.Length; ctr++)
-                {
-                    @Html.ActionLink(String.Format("{0} ", item.LabelArr[ctr]),"Category",new { category = item.LabelArr[ctr] })
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExcuseTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExcuseDescription)
+                </td>
+                <td>
+
+                    @for (int ctr = 0; ctr < item.LabelArr.Length; ctr++)
+                    {
+                        @Html.ActionLink(String.Format("{0} ", item.LabelArr[ctr]), "Category", new { category = item.LabelArr[ctr] })
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@section Scripts{
+    <script>
+        $("p .search-btn").click(function () {
+            window.location.href = "../Excuse/Category?category=" + $("#searchTxt").val();
+        });
+    </script>
+
+}

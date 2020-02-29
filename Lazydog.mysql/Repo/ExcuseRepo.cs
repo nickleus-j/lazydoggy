@@ -13,6 +13,7 @@ namespace Lazydog.mysql.Repo
         #region
         private string script_GetExcuseWithLabel = @"SELECT * FROM excuse 
             WHERE trim(ExcuseLabels) LIKE CONCAT(@Lbl,'%') OR trim(ExcuseLabels) LIKE  CONCAT('%',@Lbl)";
+        private string script_GetExcuses = @"SELECT * FROM excuse ORDER BY ExcuseTitle";
         private string script_GetRandomExcuse = "SELECT * FROM excuse order by RAND() LIMIT 1";
         #endregion
         private DbConnection connection;
@@ -79,7 +80,7 @@ namespace Lazydog.mysql.Repo
                 using (connection)
                 {
                     connection.Open();
-                    DbCommand cmd = new MySqlCommand("SELECT * FROM excuse ORDER BY ExcuseTitle", (MySqlConnection)connection);
+                    DbCommand cmd = new MySqlCommand(script_GetExcuses, (MySqlConnection)connection);
 
                     using (var reader = cmd.ExecuteReader())
                     {

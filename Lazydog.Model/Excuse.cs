@@ -17,7 +17,7 @@ namespace Lazydog.Model
         {
             get
             {
-                return Labels!=null? Labels.Split(','):new string[1];
+                return Labels != null ? Labels.Split(',') : new string[1];
             }
         }
     }
