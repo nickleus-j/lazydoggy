@@ -12,7 +12,7 @@ namespace Lazydog.mysql.Repo
     {
         #region
         private string script_GetExcuseWithLabel = @"SELECT * FROM excuse 
-            WHERE trim(ExcuseLabels) LIKE CONCAT(@Lbl,'%') OR trim(ExcuseLabels) LIKE  CONCAT('%',@Lbl)";
+            WHERE trim(ExcuseLabels) LIKE CONCAT('%',@Lbl,'%')";
         private string script_GetExcuses = @"SELECT * FROM excuse ORDER BY ExcuseTitle";
         private string script_GetRandomExcuse = "SELECT * FROM excuse order by RAND() LIMIT 1";
         #endregion

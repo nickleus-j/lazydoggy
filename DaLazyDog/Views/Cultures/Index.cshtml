@@ -1,43 +1,21 @@
-﻿@model IEnumerable<Lazydog.Model.LocalizationCulture>
+﻿
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<DaLazyDog.Resources.SharedResources> SharedLocalizer
+@model IEnumerable<Lazydog.Model.LocalizationCulture>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>@SharedLocalizer["Cultures"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-3 col-sm-4">
+            @Html.DisplayFor(modelItem => item.CultureCode)
+        </div>
+    }
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CultureCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CultureName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CultureCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CultureName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>

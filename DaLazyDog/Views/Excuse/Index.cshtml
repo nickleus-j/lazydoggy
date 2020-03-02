@@ -1,15 +1,20 @@
 ﻿@model IEnumerable<Lazydog.Model.Excuse>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Excuses";
 }
 
 <h1>Index</h1>
 
-<p class="text-center">
-    <input type="text" class="form-control" id="searchTxt" />
-    <a class="btn btn-outline-dark search-btn">Search</a>
-</p>
+<div class="text-center row">
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="searchTxt" />
+    </div>
+    <div class="offset-1 col-xs-4">
+        <a class="btn btn-outline-dark search-btn">Search</a>
+    </div>
+
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -53,7 +58,7 @@
 </table>
 @section Scripts{
     <script>
-        $("p .search-btn").click(function () {
+        $(".row .search-btn").click(function () {
             window.location.href = "../Excuse/Category?category=" + $("#searchTxt").val();
         });
     </script>
