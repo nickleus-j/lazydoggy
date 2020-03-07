@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DaLazyDog.Models;
 using Lazydog.mysql;
 using Lazydog.Model;
+using Lazydog.Model.Service;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Localization;
 
@@ -36,13 +37,7 @@ namespace DaLazyDog.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         // 	Qi3chvD?-uWm
-        [HttpGet]
-        public IActionResult SampleExcuse()
-        {
-            string[] excuses = new string[]{ "LBM","Flu","Immobilizing Lower back pain","Sore Eyes","Severe rash","Migrane", "Broken toilet at home" };
-            Random random = new Random();
-            return Content( excuses[random.Next(0, excuses.Length-1)]);
-        }
+        
         [HttpGet]
         public IActionResult GetRandomExcuse()
         {
@@ -65,5 +60,21 @@ namespace DaLazyDog.Controllers
             }
             return Json(givenExcuse);
         }
+        public IActionResult Letter()
+        {
+            ExcuseMsgTemplateService msgService = new ExcuseMsgTemplateService();
+            ViewBag.Message = msgService.GenerateHtmlOfTemplate(msgService.GenerateSampleLetter());
+            return View();
+        }
+        /*
+         * Regex regexElements = new Regex(@"\b(E|Elm|Elem)\b", RegexOptions.IgnoreCase);
+
+            foreach(Match m in regexElements.Matches(str))
+            {
+                 MessageBox.Show("Match: " + m.Value);
+            }
+
+            str = regexElements.Replace(str, "Element"); //str is my string
+         * */
     }
 }
