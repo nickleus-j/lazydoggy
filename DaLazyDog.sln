@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazydog.Model", "Lazydog.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazydog.mysql", "Lazydog.mysql\Lazydog.mysql.csproj", "{E331C4AA-B62A-4CF1-B44E-FF473AC3F841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazydog.mysql.test", "Lazydog.mysql.test\Lazydog.mysql.test.csproj", "{E800E2A8-9882-4288-859A-EEB1D4CBDA75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lazydog.mysql.test", "Lazydog.mysql.test\Lazydog.mysql.test.csproj", "{E800E2A8-9882-4288-859A-EEB1D4CBDA75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lazydog.model.Service.Test", "Lazydog.model.Service.Test\Lazydog.model.Service.Test.csproj", "{462E3A45-C4E6-40E5-B7F2-49D6B3E2607E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E800E2A8-9882-4288-859A-EEB1D4CBDA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E800E2A8-9882-4288-859A-EEB1D4CBDA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E800E2A8-9882-4288-859A-EEB1D4CBDA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462E3A45-C4E6-40E5-B7F2-49D6B3E2607E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462E3A45-C4E6-40E5-B7F2-49D6B3E2607E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462E3A45-C4E6-40E5-B7F2-49D6B3E2607E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462E3A45-C4E6-40E5-B7F2-49D6B3E2607E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

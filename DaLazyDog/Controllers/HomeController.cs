@@ -66,15 +66,6 @@ namespace DaLazyDog.Controllers
             ViewBag.Message = msgService.GenerateHtmlOfTemplate(msgService.GenerateSampleLetter());
             return View();
         }
-        /*
-         * Regex regexElements = new Regex(@"\b(E|Elm|Elem)\b", RegexOptions.IgnoreCase);
-
-            foreach(Match m in regexElements.Matches(str))
-            {
-                 MessageBox.Show("Match: " + m.Value);
-            }
-
-            str = regexElements.Replace(str, "Element"); //str is my string
-         * */
+        
     }
 }

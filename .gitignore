@@ -11,3 +11,5 @@
 /Lazydog.mysql/bin/Debug/netstandard2.0
 /Lazydog.mysql.test/obj
 /Lazydog.mysql.test/bin/Debug/netcoreapp2.2
+/Lazydog.model.Service.Test/bin/Debug/netcoreapp2.2
+/Lazydog.model.Service.Test/obj
