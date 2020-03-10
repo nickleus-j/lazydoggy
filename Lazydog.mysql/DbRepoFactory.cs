@@ -37,5 +37,10 @@ namespace Lazydog.mysql
             DbContext dbContext = new DbContext(ConnectionString);
             return new CultureRepo(dbContext.GetConnection());
         }
+        public LetterTemplateRepo GetLetterTemplateRepo(ILogger givenLogger = null)
+        {
+            DbContext dbContext = new DbContext(ConnectionString);
+            return new LetterTemplateRepo(dbContext.GetConnection(), givenLogger);
+        }
     }
 }
