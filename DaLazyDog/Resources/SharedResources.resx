@@ -120,6 +120,9 @@
   <data name="Cultures" xml:space="preserve">
     <value>Choose Culture</value>
   </data>
+  <data name="Letter_Template" xml:space="preserve">
+    <value>Letter Template</value>
+  </data>
   <data name="Localization" xml:space="preserve">
     <value>Localization</value>
   </data>

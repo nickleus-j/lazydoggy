@@ -1,44 +1,49 @@
 ﻿@model Lazydog.Model.LetterTemplate
-
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<DaLazyDog.Resources.SharedResources> SharedLocalizer
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    .letter-control {
+        margin: .15em .25em;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+</style>
 
 <div>
-    <h4>LetterTemplate</h4>
+    <h4>@SharedLocalizer["Letter_Template"]</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ID)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ID)
-        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Content)
         </dt>
         <dd class="col-sm-10">
             @Html.Raw(Model.Content)
         </dd>
-
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Active)
-        </dd>
     </dl>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+@section Scripts
+    {
+    <script>
+        $("select,input").addClass("letter-control");
+    </script>
+}

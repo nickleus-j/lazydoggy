@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Text;
 using Lazydog.Model;
 using MySql.Data.MySqlClient;
+using Lazydog.Model.Service;
 
 namespace Lazydog.mysql.Repo
 {
@@ -54,6 +55,13 @@ namespace Lazydog.mysql.Repo
                 Log(LogLevel.Error, "LetterTemplateRepo.GetLetterTemplate() Got an Unknown Error details \n" + ex.Message);
             }
             return null;
+        }
+        public LetterTemplate GetLetterTemplateInHtmlForm(int id)
+        {
+            LetterTemplate template = GetLetterTemplate(id);
+            ExcuseMsgTemplateService msgService = new ExcuseMsgTemplateService();
+            template.Content = msgService.GenerateHtmlOfTemplate(template.Content, JsonValuesService.GetOptionsFromtemplateMeta(template.Meta));
+            return template;
         }
         public IList<LetterTemplate> GetLetterTemplates()
         {

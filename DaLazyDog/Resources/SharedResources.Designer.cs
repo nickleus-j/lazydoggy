@@ -70,6 +70,15 @@ namespace DaLazyDog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Letter Template.
+        /// </summary>
+        public static string Letter_Template {
+            get {
+                return ResourceManager.GetString("Letter_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Localization.
         /// </summary>
         public static string Localization {
