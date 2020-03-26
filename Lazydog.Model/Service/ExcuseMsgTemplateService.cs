@@ -37,13 +37,18 @@ namespace Lazydog.Model.Service
             sb.Append("</select>");
             return sb.ToString();
         }
+        private IList<string> GenerateDefaultOptionsList()
+        {
+            IList<string> optionContent = new List<string>();
+            optionContent.Add("Thanks");
+            optionContent.Add("Sincerly");
+            return optionContent;
+        }
         private string ReplaceVariablesToHtmlDdl(string substringToReplace, string input, IList<string> optionContent = null)
         {
-            if (optionContent == null)
+            if (optionContent == null)//Fallback
             {
-                optionContent = new List<string>();
-                optionContent.Add("Thanks");
-                optionContent.Add("Sincerly");
+                optionContent = GenerateDefaultOptionsList();
             }
             return input.Replace(substringToReplace, createSelectTagfromTemplate(substringToReplace, optionContent));
         }
@@ -73,7 +78,7 @@ namespace Lazydog.Model.Service
             {
                 OptionsList = new Dictionary<string, IList<string>>();
             }
-            templateString = ReplaceWordsForHtmlDll(templateString, @"[|]\w+", OptionsList);//ReplaceVariablesToHtmlDdl(substringToReplace, templateString, optionContent);
+            templateString = ReplaceWordsForHtmlDll(templateString, @"[|]\w+", OptionsList);
             return ReplaceVariablesToHtmlTextBox(@"[`]\w+", templateString).Replace(" ~", String.Empty);
         }
 

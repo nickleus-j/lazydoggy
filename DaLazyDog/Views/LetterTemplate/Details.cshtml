@@ -44,6 +44,8 @@
 @section Scripts
     {
     <script>
+            var excuse = "@Html.Raw(ViewBag.Excuse)"    ;
         $("select,input").addClass("letter-control");
+        $('input[name="Excuse"]').val(excuse);
     </script>
 }

@@ -27,6 +27,7 @@ namespace DaLazyDog.Controllers
         {
             DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
             LetterTemplate template = factory.GetLetterTemplateRepo().GetLetterTemplateInHtmlForm(id);
+            ViewBag.Excuse = "Flu";
             return View(template);
         }
 
