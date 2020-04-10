@@ -22,6 +22,10 @@ namespace Lazydog.mysql.Repo
         {
             connection = _connection;
         }
+        /// <summary>
+        /// Provide a random excuse
+        /// </summary>
+        /// <returns></returns>
         public string GetRandomExcuse()
         {
             string randomExcuse=String.Empty;
@@ -72,6 +76,10 @@ namespace Lazydog.mysql.Repo
             }
             return randomExcuse;
         }
+        /// <summary>
+        /// Gets a list of Excuses from a MySQL database
+        /// </summary>
+        /// <returns></returns>
         public IList<Excuse> GetExcuses()
         {
             IList<Excuse> Excuses = new List<Excuse>();

@@ -12,7 +12,6 @@ namespace Lazydog.mysql
     public class DbRepoInstantiator
     {
         public string ConnectionString { get; set; }
-        //public ILogger Logger;
         public DbRepoInstantiator(string connectionString)
         {
             this.ConnectionString = connectionString;
@@ -37,6 +36,11 @@ namespace Lazydog.mysql
             DbContext dbContext = new DbContext(ConnectionString);
             return new CultureRepo(dbContext.GetConnection());
         }
+        /// <summary>
+        /// Returns a Letter Template Data Access object or DB repo
+        /// </summary>
+        /// <param name="givenLogger"></param>
+        /// <returns></returns>
         public LetterTemplateRepo GetLetterTemplateRepo(ILogger givenLogger = null)
         {
             DbContext dbContext = new DbContext(ConnectionString);
