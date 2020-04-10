@@ -3,7 +3,7 @@
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<DaLazyDog.Resources.SharedResources> SharedLocalizer
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Make Letter";
 }
 
 <style>
@@ -30,22 +30,53 @@
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            <h4>@Html.DisplayFor(model => model.Name)</h4>  
         </dd>
 
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-sm-10 letter-content">
             @Html.Raw(Model.Content)
         </dd>
     </dl>
 </div>
+<div class="row">
+    <div class="col-xs-3 offset-9">
+        <a class="btn btn-info btn-generate">Generate Text</a>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-4 col-xs-4 generatedText">
+
+    </div>
+</div>
 @section Scripts
     {
     <script>
-            var excuse = "@Html.Raw(ViewBag.Excuse)"    ;
+        (function (original) {
+            jQuery.fn.clone = function () {
+                var result = original.apply(this, arguments),
+                    my_textareas = this.find('textarea').add(this.filter('textarea')),
+                    result_textareas = result.find('textarea').add(result.filter('textarea')),
+                    my_selects = this.find('select').add(this.filter('select')),
+                    result_selects = result.find('select').add(result.filter('select'));
+
+                for (var i = 0, l = my_textareas.length; i < l; ++i) $(result_textareas[i]).val($(my_textareas[i]).val());
+                for (var i = 0, l = my_selects.length; i < l; ++i) result_selects[i].selectedIndex = my_selects[i].selectedIndex;
+
+                return result;
+            };
+        })(jQuery.fn.clone);
+            var excuse = "@Html.Raw(ViewBag.Excuse)";
         $("select,input").addClass("letter-control");
         $('input[name="Excuse"]').val(excuse);
+        $(".btn-generate").click(function () {
+            var contents, generated = $(".generatedText");
+            contents=$("div dl .letter-content").clone();
+            contents.find("select").each(function (index, elem) { elem.replaceWith(elem.value) });
+            contents.find("input").each(function (index, elem) { elem.replaceWith(elem.value) });
+            generated.html(contents.html());
+        });
     </script>
 }
