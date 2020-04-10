@@ -30,7 +30,13 @@ namespace DaLazyDog.Controllers
             ViewBag.Excuse = "Flu";
             return View(template);
         }
-
+        public ActionResult MakeLetter(int id,string excuseName)
+        {
+            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            LetterTemplate template = factory.GetLetterTemplateRepo().GetLetterTemplateInHtmlForm(id);
+            ViewBag.Excuse = excuseName;
+            return View(nameof(Details), template);
+        }
         // GET: LetterTemplate/Create
         public ActionResult Create()
         {

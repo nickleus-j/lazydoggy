@@ -52,7 +52,14 @@ namespace Lazydog.Model.Service
             }
             return input.Replace(substringToReplace, createSelectTagfromTemplate(substringToReplace, optionContent));
         }
-        private string ReplaceWordsForHtmlDll(string templateString, string regExPattern, Dictionary<string, IList<string>> OptionsList)
+        /// <summary>
+        /// Replaces text matching a pattern with an HTMl Drop down list(ddl) or select tags
+        /// </summary>
+        /// <param name="templateString"></param>
+        /// <param name="regExPattern"></param>
+        /// <param name="OptionsList"></param>
+        /// <returns></returns>
+        private string ReplaceWordsForHtmlDdl(string templateString, string regExPattern, Dictionary<string, IList<string>> OptionsList)
         {
             Regex regexElements = new Regex(regExPattern, RegexOptions.IgnoreCase);
             string result = templateString;
@@ -78,7 +85,7 @@ namespace Lazydog.Model.Service
             {
                 OptionsList = new Dictionary<string, IList<string>>();
             }
-            templateString = ReplaceWordsForHtmlDll(templateString, @"[|]\w+", OptionsList);
+            templateString = ReplaceWordsForHtmlDdl(templateString, @"[|]\w+", OptionsList);
             return ReplaceVariablesToHtmlTextBox(@"[`]\w+", templateString).Replace(" ~", String.Empty);
         }
 

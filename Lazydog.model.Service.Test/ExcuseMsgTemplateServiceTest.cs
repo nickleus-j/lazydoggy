@@ -9,7 +9,7 @@ namespace Lazydog.model.Service.Test
     public class ExcuseMsgTemplateServiceTest
     {
         [TestMethod]
-        public void Test_RemoveWordsForTextboxes()
+        public void Test_RemoveWordsForTextboxes_NoTilde()
         {
             string sampleTemplate=@"Hi, <br/>
             I `Name ~. wish to be excused for I have `Excuse ~. <br/>
@@ -18,6 +18,16 @@ namespace Lazydog.model.Service.Test
             ExcuseMsgTemplateService msgService = new ExcuseMsgTemplateService();
             string result = msgService.GenerateHtmlOfTemplate(sampleTemplate);
             Assert.IsFalse(result.Contains('`'));
+        }
+        [TestMethod]
+        public void Test_RemoveWordsForTextboxes_HasInputTag()
+        {
+            string sampleTemplate = @"Hi, <br/>
+            I `Name ~. wish to be excused for I have `Excuse ~. <br/>
+            |FarewellWord ~, <br/>
+            `Name";
+            ExcuseMsgTemplateService msgService = new ExcuseMsgTemplateService();
+            string result = msgService.GenerateHtmlOfTemplate(sampleTemplate);
             Assert.IsTrue(result.Contains("<input"));
         }
         [TestMethod]

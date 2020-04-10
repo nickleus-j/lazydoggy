@@ -13,3 +13,7 @@
 /Lazydog.mysql.test/bin/Debug/netcoreapp2.2
 /Lazydog.model.Service.Test/bin/Debug/netcoreapp2.2
 /Lazydog.model.Service.Test/obj
+/DaLazyDog/bin/Release/netcoreapp2.2
+/Lazydog.Model/bin/Release/netstandard2.0
+/Lazydog.mysql/bin/Release/netstandard2.0
+/DaLazyDog/Properties/PublishProfiles
