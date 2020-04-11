@@ -50,16 +50,17 @@ namespace DaLazyDog.Controllers
             DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
             Excuse givenExcuse = new Excuse();
             try
-            {
-
+            { 
                 givenExcuse = factory.GetExcuseRepo(Program.AppLogger).GetAnExcuse();
             }
-            catch (Exception) {
-       
-               
+            catch (Exception) { 
             }
             return Json(givenExcuse);
         }
+        /// <summary>
+        /// Letter generation
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Letter()
         {
             ExcuseMsgTemplateService msgService = new ExcuseMsgTemplateService();

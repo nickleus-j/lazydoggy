@@ -1,5 +1,13 @@
 {
   "version": "1.0",
   "defaultProvider": "cdnjs",
-  "libraries": []
+  "libraries": [
+    {
+      "library": "angular.js@1.7.9",
+      "destination": "wwwroot/lib/angular.js/",
+      "files": [
+        "angular.min.js"
+      ]
+    }
+  ]
 }
