@@ -45,8 +45,9 @@
     <script src="~/lib/angular.js/angular.min.js"></script>
     <script src="~/js/GenerateLetterPage.js"></script>
     <script>
-        var excuse = "@Html.Raw(ViewBag.Excuse)";
-       
         LetterGenerator.init("@Html.Raw(ViewBag.Excuse)");
     </script>
+}
+@section OgTags{
+    <meta property="og:title" content="@ViewData["Title"]" />
 }

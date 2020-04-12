@@ -56,6 +56,11 @@ namespace Lazydog.mysql.Repo
             }
             return null;
         }
+        /// <summary>
+        /// Get a letter Template from DB
+        /// </summary>
+        /// <param name="id">ID in the Database</param>
+        /// <returns></returns>
         public LetterTemplate GetLetterTemplateInHtmlForm(int id)
         {
             LetterTemplate template = GetLetterTemplate(id);
@@ -63,6 +68,10 @@ namespace Lazydog.mysql.Repo
             template.Content = msgService.GenerateHtmlOfTemplate(template.Content, JsonValuesService.GetOptionsFromtemplateMeta(template.Meta));
             return template;
         }
+        /// <summary>
+        /// Get All Active Letter Templates in the database
+        /// </summary>
+        /// <returns></returns>
         public IList<LetterTemplate> GetLetterTemplates()
         {
             IList<LetterTemplate> templates = new List<LetterTemplate>();
