@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "outDir": "../tsCompiled",
+    "target": "es5"
+  },
+  
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}
