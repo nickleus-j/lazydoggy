@@ -4,37 +4,61 @@
     ViewData["Title"] = Localizer["The Lazy Dog"];
 
 }
+<style>
+    .tab-content ul {
+        font-size: 14px;
+        background: lightyellow;
+        padding: 25px;
+        border-radius: 20px;
+    }
+    .tab-content ul li {
+        list-style: none;
+        margin-bottom: 5px;
+    }
+</style>
 <p class="hidden loading-text">@Localizer["Loading"]</p>
-<div class="text-center excuse-panel">
-    <h1 class="display-4">@Localizer["Welcome to the Lazy Dog"]</h1>
-    <p>@Localizer["Prepared_Excuses"]</p>
-    <a class="btn excuse-btn btn-primary text-white">
-        @Localizer["GetExcuse"]
-    </a>
+<div class="tab-content" ng-app="lazyDog" ng-controller="Index">
+    <div class="text-center excuse-panel">
+        <h1 class="display-4">@Localizer["Welcome to the Lazy Dog"]</h1>
+        <p>@Localizer["Prepared_Excuses"]</p>
+        <a class="btn excuse-btn btn-primary text-white" ng-click='GetAnExcuse()'>
+            @Localizer["GetExcuse"]
+        </a>
         <hr />
-        <p><h2 class="excuse display-4"></h2></p>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-8">
-        <p class="excuse-description"></p>
+        
     </div>
-    <div class="col-xs-12 col-sm-4">
-        <ul>
+    <p><h2 class="excuse display-4"></h2></p>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <p class="excuse-description"></p>
+        </div>
+        <div class="col-xs-12 col-sm-4">
             
-        </ul>
+        </div>
+    </div>
+    <div class="row hidden link-to-letter-maker">
+        <div class="col-xs-4 col-sm-8">
+            <a class="btn btn-dark">@Localizer["MakeLetter"]</a>
+        </div>
+        <div class="col-xs-8 col-sm-3  float-right">
+            <ul class="history"></ul>
+        </div>
     </div>
 </div>
-<div class="row hidden link-to-letter-maker">
-    <div class="col-xs-4 offset-9 float-right">
-        <a class="btn btn-dark">@Localizer["MakeLetter"]</a>
-    </div>
-</div>
+
+
 @section Scripts
     {
+    <script src="~/lib/angular.js/angular.min.js"></script>
     <script src="@Url.Content("~/js/LazyDogAjax.js")"></script>
     <script type="text/javascript">
-
-        Ajaxes.HomeInit();
+        var app = angular.module('lazyDog', []);
+        app.controller('Index', function ($scope) {
+            $scope.GetAnExcuse = function () {
+                Ajaxes.GetAnExcuse(".excuse", "p.excuse-description", ".link-to-letter-maker");
+            }
+        });
+        //Ajaxes.HomeInit();
         Ajaxes.UiTexts.Loading = $("p.loading-text").text();
     </script>
 }

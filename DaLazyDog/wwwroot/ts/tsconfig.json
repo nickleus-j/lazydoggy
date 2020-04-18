@@ -4,12 +4,16 @@
     "noEmitOnError": true,
     "removeComments": true,
     "sourceMap": true,
+
     "outDir": "../tsCompiled",
     "target": "es5"
   },
-  
+
   "exclude": [
     "node_modules",
     "wwwroot"
-  ]
+  ],
+  "types": [ "node" ],
+  "typeRoots": [ "../node_modules/@types" ]
 }
+

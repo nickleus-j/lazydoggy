@@ -1,7 +1,8 @@
 ﻿//@import { Component } from '@angular/core'
 //@Component({
 //    selector: 'app-panel'
-//});
+//})
+
  class ExcusePanelComponent{
      Excuses: string[]
      getLength() {
