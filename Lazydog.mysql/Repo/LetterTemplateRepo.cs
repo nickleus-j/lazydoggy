@@ -30,6 +30,11 @@ namespace Lazydog.mysql.Repo
             templateEntry.Active = reader["Active"].ToString()=="1";
             return templateEntry;
         }
+        /// <summary>
+        /// Get Letter template
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public LetterTemplate GetLetterTemplate(int id)
         {
             try

@@ -15,9 +15,16 @@ namespace Lazydog.mysql.Repo
             WHERE trim(ExcuseLabels) LIKE CONCAT('%',@Lbl,'%')";
         private string script_GetExcuses = @"SELECT * FROM excuse ORDER BY ExcuseTitle";
         private string script_GetRandomExcuse = "SELECT * FROM excuse order by RAND() LIMIT 1";
+        private string script_GetExcusesTitles = @"SELECT ExcuseTitle FROM excuse ORDER BY ExcuseTitle";
+        
         #endregion
         private DbConnection connection;
         public ILogger Logger;
+        /// <summary>
+        /// Make A DAO for excuses
+        /// </summary>
+        /// <param name="_connection">Connection string</param>
+        /// <param name="givenLogger">Logger</param>
         public ExcuseRepo(DbConnection _connection, ILogger givenLogger=null)
         {
             connection = _connection;
@@ -46,6 +53,30 @@ namespace Lazydog.mysql.Repo
             }
             return randomExcuse;
         }
+        public List<string> GetExcuseTitles()
+        {
+            List<string> excuses = new List<string>();
+            using (connection)
+            {
+                connection.Open();
+                DbCommand cmd = new MySqlCommand(script_GetExcusesTitles, (MySqlConnection)connection);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        excuses.Add(reader["ExcuseTitle"].ToString());
+
+                    }
+                }
+                connection.Close();
+            }
+            return excuses;
+        }
+        /// <summary>
+        /// Get a random Excuse
+        /// </summary>
+        /// <returns></returns>
         public Excuse GetAnExcuse()
         {
             Excuse randomExcuse =new Excuse();
@@ -111,6 +142,11 @@ namespace Lazydog.mysql.Repo
             }
             return Excuses;
         }
+        /// <summary>
+        /// Get Excuses based on Labels
+        /// </summary>
+        /// <param name="label">Labels or categories</param>
+        /// <returns></returns>
         public IList<Excuse> GetExcuses(string label)
         {
             IList<Excuse> Excuses = new List<Excuse>();
@@ -142,6 +178,11 @@ namespace Lazydog.mysql.Repo
             }
             return Excuses;
         }
+        /// <summary>
+        /// Assign values from Excuse DB to Excuse object
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         private Excuse GetExcuseFromReader(DbDataReader reader)
         {
             Excuse givenExcuse = new Excuse();

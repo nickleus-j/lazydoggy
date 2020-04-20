@@ -47,6 +47,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SharedResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Views.Excuse.Index.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Views.Excuse.Index.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 
@@ -54,6 +59,10 @@
     <EmbeddedResource Update="Resources\SharedResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views.Excuse.Index.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Views.Excuse.Index.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

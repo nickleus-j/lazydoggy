@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Lazydog.Model.Excuse>
-
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<Lazydog.Model.Excuse>
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Excuses";
+    ViewData["Title"] = Localizer["PageTitle"];
 }
 
 <h1>Index</h1>
@@ -48,8 +49,8 @@
                     }
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+
+                    @Html.ActionLink(Localizer.GetString("MakeLetter"), "MakeLetter", "LetterTemplate", new {  id=1, excuseName =item.ExcuseTitle},null) |
                     @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
                 </td>
             </tr>

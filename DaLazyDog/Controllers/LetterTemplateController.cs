@@ -19,6 +19,7 @@ namespace DaLazyDog.Controllers
         public ActionResult Index()
         {
             DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            ViewBag.Excuses = factory.GetExcuseRepo().GetExcuseTitles();
             return View(factory.GetLetterTemplateRepo().GetLetterTemplates());
         }
 

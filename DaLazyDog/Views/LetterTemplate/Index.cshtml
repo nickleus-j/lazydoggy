@@ -9,6 +9,9 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<p>
+    @Html.DropDownList("Excuses", new SelectList(ViewBag.Excuses))
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -31,27 +34,39 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Meta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ID })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Meta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID })
+
+                    <a href="@String.Concat("MakeLetter/",item.ID.ToString(),"?excuseName=")" class="make-letter" data-name="@Html.Raw(item.Name)" > Make Letter</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+@section Scripts
+    {
+    
+    <script>
+        $(".make-letter").click(function (item) {
+            $(this).attr("href", $(this).attr("href") + $("#Excuses").val());
+        });
+    </script>
+}

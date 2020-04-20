@@ -11,10 +11,9 @@ namespace Lazydog.model.Service.Test
         [TestMethod]
         public void Test_RemoveWordsForTextboxes_NoTilde()
         {
-            string sampleTemplate=@"Hi, <br/>
-            I `Name ~. wish to be excused for I have `Excuse ~. <br/>
-            |FarewellWord ~, <br/>
-            `Name";
+            string sampleTemplate= @"Hi |sirmam ~, <br/>
+            I `Name ~., wish to be excused for my `Excuse ~. <br/>
+            |FarewellWord ~, <br/>`Name";
             ExcuseMsgTemplateService msgService = new ExcuseMsgTemplateService();
             string result = msgService.GenerateHtmlOfTemplate(sampleTemplate);
             Assert.IsFalse(result.Contains('`'));
