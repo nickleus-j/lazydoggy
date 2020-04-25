@@ -6,11 +6,9 @@
 
 <h1>Index</h1>
 
+
 <p>
-    <a asp-action="Create">Create New</a>
-</p>
-<p>
-    @Html.DropDownList("Excuses", new SelectList(ViewBag.Excuses))
+    @Html.DropDownList("Excuses", new SelectList(ViewBag.Excuses), "Excuses", new { @class = "form-control excuse-ddl" })
 </p>
 <table class="table">
     <thead>
@@ -40,8 +38,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ID)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
+                <td data-content="@(item.Content)" class="content-cell">
+                    
+                    @Html.Raw(item.Content)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Meta)
@@ -55,7 +54,7 @@
                 <td>
                     @Html.ActionLink("Details", "Details", new { id = item.ID })
 
-                    <a href="@String.Concat("MakeLetter/",item.ID.ToString(),"?excuseName=")" class="make-letter" data-name="@Html.Raw(item.Name)" > Make Letter</a>
+                    <a href="@String.Concat("lettertemplate/MakeLetter/",item.ID.ToString(),"?excuseName=")" class="make-letter" data-name="@Html.Raw(item.Name)"> Make Letter</a>
                 </td>
             </tr>
         }
@@ -63,10 +62,20 @@
 </table>
 @section Scripts
     {
-    
+
+    <script src="~/tsCompiled/LetterMaker.js"></script>
     <script>
         $(".make-letter").click(function (item) {
             $(this).attr("href", $(this).attr("href") + $("#Excuses").val());
         });
+        $(".excuse-ddl").change(function (e) {
+            var maker = new LetterMaker("");
+            var rows = $("td.content-cell");
+            rows.each(function (index, elem) {
+                elem.innerText =maker.makeLetter(elem.getAttribute("data-content"), "`Excuse", $("select option:selected").text());
+            });
+        })
+        
+        
     </script>
 }
