@@ -54,7 +54,7 @@
                 <td>
                     @Html.ActionLink("Details", "Details", new { id = item.ID })
 
-                    <a href="@String.Concat("lettertemplate/MakeLetter/",item.ID.ToString(),"?excuseName=")" class="make-letter" data-name="@Html.Raw(item.Name)"> Make Letter</a>
+                    <a href="@String.Concat("../lettertemplate/MakeLetter/",item.ID.ToString(),"?excuseName=")" class="make-letter" data-name="@Html.Raw(item.Name)"> Make Letter</a>
                 </td>
             </tr>
         }
@@ -72,7 +72,7 @@
             var maker = new LetterMaker("");
             var rows = $("td.content-cell");
             rows.each(function (index, elem) {
-                elem.innerText =maker.makeLetter(elem.getAttribute("data-content"), "`Excuse", $("select option:selected").text());
+                elem.innerHTML =maker.makeLetter(elem.getAttribute("data-content"), "`Excuse", $("select option:selected").text());
             });
         })
         

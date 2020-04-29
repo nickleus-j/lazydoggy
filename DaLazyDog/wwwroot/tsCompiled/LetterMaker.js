@@ -8,6 +8,10 @@ var LetterMaker = (function () {
     };
     LetterMaker.prototype.removeTildeAndBr = function (oldText) {
         var text = oldText;
+        var regex = new RegExp("(\s|)+(\`+[a-zA-Z]*)");
+        while (regex.test(text)) {
+            text = text.replace(regex, "<input class='form-control'/> ");
+        }
         while (text.indexOf(' ~') >= 0) {
             text = text.replace(" ~", "");
         }
