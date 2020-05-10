@@ -5,6 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace Lazydog.Model.Service
 {
+    /// <summary>
+    /// Foe Excuse Message Data Services and apply Business logic on Message Entity
+    /// </summary>
     public class ExcuseMsgTemplateService
     {
         public string GenerateSampleLetter()

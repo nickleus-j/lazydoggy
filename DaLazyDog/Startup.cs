@@ -39,11 +39,9 @@ namespace DaLazyDog
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-
-            
             #endregion
             services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.Add(new ServiceDescriptor(typeof(DbRepoInstantiator), new DbRepoInstantiator(Configuration.GetConnectionString("DefaultConnection"))));
+            services.Add(new ServiceDescriptor(typeof(DbRepoInstantiator), new DbRepoInstantiator(Configuration["DefaultConnection"])));
 
             services.Configure<RequestLocalizationOptions>(options =>{
                     var supportedCultures = new List<CultureInfo>

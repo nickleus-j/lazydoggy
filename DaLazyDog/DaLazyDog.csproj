@@ -13,6 +13,7 @@
 	<TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <Authors>Nickleus Jimenez</Authors>
+    <UserSecretsId>b0ba7d74-5056-49a3-9e1f-d96f60495149</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
