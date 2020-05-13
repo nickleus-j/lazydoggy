@@ -12,7 +12,8 @@ var LetterMaker = (function () {
         Object.keys(ddlData).forEach(function (key) {
             result = result.replace(new RegExp("(s|)+([|]+" + key + ")"), maker.createSelectTagFromArray(ddlData[key]));
         });
-        return result;
+        var defaultArr = ["Thanks", "Sincerly"];
+        return this.replaceSubStringMatchingregEx(new RegExp("(\s|)+([\|]+[a-zA-Z]*)"), result, maker.createSelectTagFromArray(defaultArr));
     };
     LetterMaker.prototype.createSelectTagFromArray = function (arr) {
         var result = "<select class='form-control'>";

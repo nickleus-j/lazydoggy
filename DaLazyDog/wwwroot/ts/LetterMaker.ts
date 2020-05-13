@@ -11,9 +11,10 @@
         Object.keys(ddlData).forEach(function (key) {
             result = result.replace(new RegExp(`(\s|)+([\|]+${key})`), maker.createSelectTagFromArray(ddlData[key]));
         });
-        return result;
+        let defaultArr: string[] = ["Thanks","Sincerly"];
+        return this.replaceSubStringMatchingregEx(new RegExp("(\s|)+([\|]+[a-zA-Z]*)"), result, maker.createSelectTagFromArray(defaultArr));
     }
-    createSelectTagFromArray(arr: object[]): string {
+    createSelectTagFromArray(arr:  unknown[]): string {
         let result: string = "<select class='form-control'>";
         for (var ctr = 0; ctr < arr.length; ctr++) {
             result = result.concat(`<option>${arr[ctr]}</option>`)
@@ -33,7 +34,7 @@
         }
         return oldText;
     }
-    //"|greeta".replace(new RegExp("(\s|)+([\|]+greet)"),"sa ")
+    
     formatTextForGeneratedLetters(oldText: string): string {
         let text: string;
         let regex = new RegExp("(\s|)+(\`+[a-zA-Z]*)");
