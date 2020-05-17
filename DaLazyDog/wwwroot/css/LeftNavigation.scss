@@ -1,0 +1,13 @@
+﻿$small-screen-width:600px;
+.filter-form {
+    @media only screen and (min-width: $small-screen-width) {
+        position: fixed;
+        left: 5%;
+        background: whitesmoke;
+        padding: 1%;
+    }
+
+    ul li label {
+        margin-left: 5px;
+    }
+}

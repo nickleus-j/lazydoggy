@@ -1,0 +1,9 @@
+﻿@media only screen and (min-width: 600px) {
+  .filter-form {
+    position: fixed;
+    left: 5%;
+    background: whitesmoke;
+    padding: 1%; } }
+
+.filter-form ul li label {
+  margin-left: 5px; }

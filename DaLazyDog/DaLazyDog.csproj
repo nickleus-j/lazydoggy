@@ -17,9 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
     <Content Remove="wwwroot\js\ExcuseLetter.ts" />
     <Content Remove="wwwroot\ts\ExcusesPanel.ts" />
     <Content Remove="wwwroot\ts\LetterMaker.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
   </ItemGroup>
 
 
