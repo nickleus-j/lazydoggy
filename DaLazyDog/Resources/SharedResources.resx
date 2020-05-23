@@ -120,6 +120,12 @@
   <data name="Cultures" xml:space="preserve">
     <value>Choose Culture</value>
   </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Listing</value>
+  </data>
   <data name="Letter_Template" xml:space="preserve">
     <value>Letter Template</value>
   </data>

@@ -67,6 +67,9 @@ namespace DaLazyDog.Controllers
             ViewBag.Message = msgService.GenerateHtmlOfTemplate(msgService.GenerateSampleLetter());
             return View();
         }
-        
+        public IActionResult Color()
+        {
+            return View();
+        }
     }
 }

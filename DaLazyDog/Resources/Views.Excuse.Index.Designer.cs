@@ -61,6 +61,15 @@ namespace DaLazyDog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category Filter.
+        /// </summary>
+        public static string Category_Filter {
+            get {
+                return ResourceManager.GetString("Category_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suggest an Excuse.
         /// </summary>
         public static string GetExcuse {
@@ -110,16 +119,16 @@ namespace DaLazyDog.Resources {
         /// </summary>
         public static string The_Lazy_Dog {
             get {
-                return ResourceManager.GetString("The Lazy Dog", resourceCulture);
+                return ResourceManager.GetString("The_Lazy_Dog", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Welcome to Lazy Dog.
         /// </summary>
-        public static string Welcome_to_the_Lazy_Dog {
+        public static string Welcome_Lazy_Dog {
             get {
-                return ResourceManager.GetString("Welcome to the Lazy Dog", resourceCulture);
+                return ResourceManager.GetString("Welcome_Lazy_Dog", resourceCulture);
             }
         }
     }

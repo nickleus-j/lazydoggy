@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DaLazyDog.Resources;
 
 namespace DaLazyDog
 {
@@ -40,7 +41,10 @@ namespace DaLazyDog
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             #endregion
-            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization(options => {
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    factory.Create(typeof(SharedResources));
+            });
             services.Add(new ServiceDescriptor(typeof(DbRepoInstantiator), new DbRepoInstantiator(Configuration["DefaultConnection"])));
 
             services.Configure<RequestLocalizationOptions>(options =>{

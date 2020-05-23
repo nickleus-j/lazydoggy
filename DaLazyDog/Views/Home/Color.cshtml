@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Color";
+}<style>
+    canvas{
+        border:1px solid #546050;
+    }
+    </style>
+<h1>Color</h1>
+<canvas id="lookwhatIdrew" width="1200" height="800"></canvas>
+@section Scripts{
+    
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        function colorTheCanvas() {
+            var canvas = document.getElementById("lookwhatIdrew");
+            var context = canvas.getContext("2d");
+            var cellWidthHeight = 100;
+            context.clearRect(0, 0, 1200, 800);
+            for (var row = 0; row < 8; row++) {
+                var y = row * cellWidthHeight;
+                for (var col = 0; col < 12; col++) {
+                    var x = col * cellWidthHeight;
+                    context.fillStyle = getRandomColor();
+                    context.fillRect(x, y, cellWidthHeight, cellWidthHeight);
+                }
+            }
+        }
+        colorTheCanvas();
+        setInterval(colorTheCanvas, 500);
+    </script>
+
+}
