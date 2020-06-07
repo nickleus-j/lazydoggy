@@ -56,7 +56,7 @@
 
                     @for (int ctr = 0; ctr < item.LabelArr.Length; ctr++)
                     {
-                        @Html.ActionLink(String.Format("{0} ", item.LabelArr[ctr]), "Category", new { category = item.LabelArr[ctr] })
+                        <a href="#">@item.LabelArr[ctr]</a>
                     }
                 </td>
                 <td>

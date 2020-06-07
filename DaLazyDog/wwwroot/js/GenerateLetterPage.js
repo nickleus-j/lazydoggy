@@ -1,6 +1,6 @@
 ﻿var LetterGenerator = {
     init: function (excuse) {
-        LetterGenerator.overWirteJqueryClone();
+        LetterGenerator.overWriteJqueryClone();
         $("select,input").addClass("letter-control");
         $('input[name="Excuse"]').val(excuse);
         LetterGenerator.initAngularScripts();
@@ -21,7 +21,7 @@
             $scope.generateLetter();
         });
     },
-    overWirteJqueryClone: function () {
+    overWriteJqueryClone: function () {
         (function (original) {
             jQuery.fn.clone = function () {
                 var result = original.apply(this, arguments),
