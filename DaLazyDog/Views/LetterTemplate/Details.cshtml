@@ -3,13 +3,13 @@
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<DaLazyDog.Resources.SharedResources> SharedLocalizer
 @{
-    ViewData["Title"] = $"Make Letter for {ViewBag.Excuse}";
+    ViewData["Title"] = String.Concat( "Make Letter for ", ViewBag.Excuse);
 }
 
 <div ng-app="lazyDog" ng-controller="Details">
 
     <div>
-        <h4>@SharedLocalizer["Letter_Template"]</h4>
+        <h4>@ViewData["Title"]</h4>
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
