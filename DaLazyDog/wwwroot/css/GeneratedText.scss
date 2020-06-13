@@ -1,0 +1,10 @@
+﻿$small-screen-width: 600px;
+.generatedText {
+    font-size: 1.7em;
+    font-family:'Lucida Sans Typewriter',Verdana, Geneva, Tahoma, sans-serif;
+    transition: font-size 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    @media only screen and (max-width: $small-screen-width) {
+        font-size: 1.5em;
+    }
+}

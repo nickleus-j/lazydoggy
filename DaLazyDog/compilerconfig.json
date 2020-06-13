@@ -2,5 +2,9 @@
   {
     "outputFile": "wwwroot/css/LeftNavigation.css",
     "inputFile": "wwwroot/css/LeftNavigation.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/GeneratedText.css",
+    "inputFile": "wwwroot/css/GeneratedText.scss"
   }
 ]
