@@ -79,3 +79,23 @@ body {
 div.white-space-pre-line {
     white-space: pre-line;
 }
+button.btn, .btn {
+    line-height: 56px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap
+}
+.btn-primary.btn{
+    font-size:21px;
+}
+a.primary-btn.btn, .primary-btn.btn {
+    background: #fd7700
+}
+
+a.second-prim-btn.btn, .second-prim-btn.btn {
+    background: #122f52
+}
+div.letter-content {
+    background: ivory;
+    border: 1px solid #01aa30;
+}
