@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Meet";
+}
+<style>
+    video {
+    max-height:500px;
+    display: block;
+    object-fit: cover;
+    }
+</style>
+<div class="row">
+    <div class="col-xs-12">
+        <video id="localVideo" playsinline autoplay> </video>
+    </div>
+</div>
+
+<script>
+    var peerConn = new RTCPeerConnection();
+    peerConn.ontrack  = function (evt) {
+        var videoElem = document.getElementById('peerVideo');
+        document.appendChild(videoElem);
+        videoElem.src = URL.createObjectURL(evt.stream);
+    };
+    window.addEventListener("load", function (evt) {
+        
+        var video = document.querySelector("#localVideo");
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function (err0r) {
+                    console.log("Something went wrong!");
+                });
+        }
+      });
+</script>
