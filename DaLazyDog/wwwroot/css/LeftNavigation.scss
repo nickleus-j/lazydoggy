@@ -1,11 +1,15 @@
 ﻿$small-screen-width:600px;
 .filter-form {
     max-height: 80%;
+    background: #fff;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    background: whitesmoke;
 
     @media only screen and (min-width: $small-screen-width) {
         position: fixed;
         left: 1%;
-        background: whitesmoke;
         padding: 1%;
 
         fieldset legend {
@@ -15,6 +19,7 @@
 
     ul {
         overflow-y: scroll;
+
         li label {
             margin-left: 5px;
         }
