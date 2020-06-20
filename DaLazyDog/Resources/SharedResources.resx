@@ -135,4 +135,7 @@
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
   </data>
+  <data name="WebConf" xml:space="preserve">
+    <value>Meet</value>
+  </data>
 </root>

@@ -16,10 +16,11 @@ namespace DaLazyDog.Controllers
     public class HomeController : Controller
     {
         private readonly IStringLocalizer<HomeController> _localizer;
-
-        public HomeController(IStringLocalizer<HomeController> localizer)
+        ILoggerFactory _loggerFactory;
+        public HomeController(IStringLocalizer<HomeController> localizer, ILoggerFactory loggerFactory)
         {
             _localizer = localizer;
+            _loggerFactory = loggerFactory;
         }
         public IActionResult Index()
         {
@@ -28,6 +29,7 @@ namespace DaLazyDog.Controllers
 
         public IActionResult Privacy()
         {
+            _loggerFactory.CreateLogger("LoggerCategory").LogInformation("Read privacy");
             return View();
         }
 

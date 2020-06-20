@@ -113,5 +113,14 @@ namespace DaLazyDog.Resources {
                 return ResourceManager.GetString("Privacy", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meet.
+        /// </summary>
+        public static string WebConf {
+            get {
+                return ResourceManager.GetString("WebConf", resourceCulture);
+            }
+        }
     }
 }

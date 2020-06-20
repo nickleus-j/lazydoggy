@@ -27,6 +27,10 @@ namespace DaLazyDog
         }
         public static ILogger<Program> AppLogger;
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+            });
     }
 }

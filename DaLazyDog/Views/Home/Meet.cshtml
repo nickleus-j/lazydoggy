@@ -3,18 +3,25 @@
     ViewData["Title"] = "Meet";
 }
 <style>
+    .current-user video {
+        max-height: 500px;
+        margin-bottom:.5em;
+    }
     video {
-    max-height:500px;
-    display: block;
-    object-fit: cover;
+        max-height: 300px;
+        display: block;
     }
 </style>
 <div class="row">
-    <div class="col-xs-12">
-        <video id="localVideo" playsinline autoplay> </video>
+    <div class="col-xs-12 current-user">
+        <video id="localVideo" playsinline autoplay muted> </video>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-sm-3">
+        <video src="https://static.videezy.com/system/resources/previews/000/042/042/original/Ramdom_Lines_x264.mp4" playsinline autoplay ></video>
+    </div>
+</div>
 <script>
     var peerConn = new RTCPeerConnection();
     peerConn.ontrack  = function (evt) {

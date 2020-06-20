@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DaLazyDog.Resources;
+using Microsoft.Extensions.Logging;
 
 namespace DaLazyDog
 {
@@ -65,11 +66,13 @@ namespace DaLazyDog
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                logger.LogInformation("Dev mode!");
             }
             else
             {
@@ -100,6 +103,7 @@ namespace DaLazyDog
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            logger.LogInformation("App started");
         }
     }
 }
