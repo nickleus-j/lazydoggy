@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DaLazyDog.Resources;
 using Microsoft.Extensions.Logging;
+using DaLazyDog.Models;
 
 namespace DaLazyDog
 {
@@ -38,11 +39,12 @@ namespace DaLazyDog
             });
 
             #region snippet1
-
+            services.AddSingleton<CultureLocalizer>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
             #endregion
-            services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization(options => {
+            services.AddMvc().AddViewLocalization(o => o.ResourcesPath = "Resources")
+                .AddDataAnnotationsLocalization(options => {
                 options.DataAnnotationLocalizerProvider = (type, factory) =>
                     factory.Create(typeof(SharedResources));
             });

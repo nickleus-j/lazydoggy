@@ -36,6 +36,7 @@ namespace DaLazyDog.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            _loggerFactory.CreateLogger("LoggerCategory").LogError(String.Concat("Error ",HttpContext.TraceIdentifier));
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         // 	Qi3chvD?-uWm

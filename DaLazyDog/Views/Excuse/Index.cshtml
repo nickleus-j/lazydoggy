@@ -3,12 +3,12 @@
 @using DaLazyDog.Resources
 @model IEnumerable<Lazydog.Model.Excuse>
 @inject IViewLocalizer Localizer
-@inject IHtmlLocalizer<SharedResources> SharedLocalizer
+@inject DaLazyDog.Models.CultureLocalizer SharedLocalizer
 @{
     ViewData["Title"] = Localizer["PageTitle"];
 }
 <link href="~/css/LeftNavigation.min.css" rel="stylesheet" />
-<h1>@SharedLocalizer["Index"]</h1>
+<h1>@SharedLocalizer.Text("Index")</h1>
 
 <div class="text-center row hidden">
     <div class="col-xs-4">
