@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppName" xml:space="preserve">
+    <value>Da Lazy Dog</value>
+  </data>
   <data name="Cultures" xml:space="preserve">
     <value>Choose Culture</value>
   </data>
+  <data name="ErrorDesc" xml:space="preserve">
+    <value>An error occurred while processing your request.</value>
+  </data>
+  <data name="ErrorHead" xml:space="preserve">
+    <value>Error!</value>
+  </data>
+  <data name="Excuses" xml:space="preserve">
+    <value>Excuse List</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Filter</value>
+  </data>
+  <data name="GetExcuse" xml:space="preserve">
+    <value>Get Excuse</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>Listing</value>
@@ -135,7 +150,13 @@
   <data name="Privacy" xml:space="preserve">
     <value>Privacy</value>
   </data>
+  <data name="SearchVerb" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="WebConf" xml:space="preserve">
     <value>Meet</value>
+  </data>
+  <data name="WriteLetterFor" xml:space="preserve">
+    <value>Make Letter for </value>
   </data>
 </root>

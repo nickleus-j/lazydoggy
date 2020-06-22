@@ -25,7 +25,8 @@ namespace Lazydog.Model.Service
             foreach (Match m in regexElements.Matches(templateString))
             {
                 string textboxName = m.Value.Substring(1);
-                templateString = templateString.Replace(m.Value, String.Format("<input type=\"text\" placeholder=\"{0}\" name=\"{0}\"/>", textboxName));
+                string inputHtmlString = String.Concat("<input type=\"text\" placeholder=\"", textboxName, "\" name=\"", textboxName, "\"/>");
+                templateString = templateString.Replace(m.Value, inputHtmlString);
             }
             return templateString;
         }
@@ -35,7 +36,9 @@ namespace Lazydog.Model.Service
             sb.AppendFormat("<select name='{0}'>", substringToReplace.Substring(1));
             foreach (string option in optionContent)
             {
-                sb.AppendFormat("<option>{0}</option>", option);
+                sb.Append("<option>");
+                sb.Append(option);
+                sb.Append("</option>");
             }
             sb.Append("</select>");
             return sb.ToString();

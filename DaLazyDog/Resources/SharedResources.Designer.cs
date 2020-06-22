@@ -61,6 +61,15 @@ namespace DaLazyDog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Da Lazy Dog.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose Culture.
         /// </summary>
         public static string Cultures {
@@ -70,11 +79,47 @@ namespace DaLazyDog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while processing your request..
+        /// </summary>
+        public static string ErrorDesc {
+            get {
+                return ResourceManager.GetString("ErrorDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error!.
+        /// </summary>
+        public static string ErrorHead {
+            get {
+                return ResourceManager.GetString("ErrorHead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excuse List.
+        /// </summary>
+        public static string Excuses {
+            get {
+                return ResourceManager.GetString("Excuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
         public static string Filter {
             get {
                 return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Excuse.
+        /// </summary>
+        public static string GetExcuse {
+            get {
+                return ResourceManager.GetString("GetExcuse", resourceCulture);
             }
         }
         
@@ -115,11 +160,29 @@ namespace DaLazyDog.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchVerb {
+            get {
+                return ResourceManager.GetString("SearchVerb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meet.
         /// </summary>
         public static string WebConf {
             get {
                 return ResourceManager.GetString("WebConf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make Letter for .
+        /// </summary>
+        public static string WriteLetterFor {
+            get {
+                return ResourceManager.GetString("WriteLetterFor", resourceCulture);
             }
         }
     }

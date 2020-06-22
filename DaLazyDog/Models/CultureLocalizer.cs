@@ -25,5 +25,19 @@ namespace DaLazyDog.Models
                 ? _localizer[key]
                 : _localizer[key, arguments];
         }
+        /// <summary>
+        /// Get Localized string from Resource
+        /// if we have formatted string we can provide arguments  
+        /// e.g.: @Localizer.Text("Hello {0}", User.Name)
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="arguments"></param>
+        /// <returns></returns>
+        public LocalizedString Localize(string key, params string[] arguments)
+        {
+            return arguments == null
+                ? _localizer[key]
+                : _localizer[key, arguments];
+        }
     }
 }

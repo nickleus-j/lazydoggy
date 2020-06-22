@@ -1,9 +1,9 @@
 ﻿@model Lazydog.Model.LetterTemplate
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Microsoft.Extensions.Localization
-@inject IStringLocalizer<DaLazyDog.Resources.SharedResources> SharedLocalizer
+@inject DaLazyDog.Models.CultureLocalizer SharedLocalizer
 @{
-    ViewData["Title"] = String.Concat( "Make Letter for ", ViewBag.Excuse);
+    ViewData["Title"] = String.Concat(SharedLocalizer.Localize("WriteLetterFor"), ViewBag.Excuse);
 }
 <link href="~/css/GeneratedText.min.css" rel="stylesheet" />
 <div ng-app="lazyDog" ng-controller="Details">
