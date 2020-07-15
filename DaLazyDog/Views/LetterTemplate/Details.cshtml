@@ -29,11 +29,11 @@
     </div>
     <div class="row">
         <div class="col-xs-3 offset-9">
-            <a href="#" class="btn btn-info btn-generate" ng-click="generateLetter()">Generate Text</a>
+            <a href="#generatedText" class="btn btn-info btn-generate" ng-click="generateLetter()">Generate Text</a>
         </div>
     </div>
     <div class="row letter-content">
-        <div class="offset-3 col-xs-6 generatedText white-space-pre-line">
+        <div class="col-xs-12 generatedText white-space-pre-line" id="generatedText">
             {{LetterContent}}
         </div>
         <div class="col-xs-3">
