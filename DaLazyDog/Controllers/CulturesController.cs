@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Lazydog.Model;
+using Lazydog.Model.Repo;
 using Lazydog.mysql;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace DaLazyDog.Controllers
         // GET: Cultures
         public ActionResult Index()
         {
-            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             IList<LocalizationCulture> Cultures = factory.GetCultureRepo(Program.AppLogger).GetSupportedCultures();
             return View(Cultures);
         }

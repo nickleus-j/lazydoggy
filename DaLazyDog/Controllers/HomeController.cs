@@ -10,6 +10,7 @@ using Lazydog.Model;
 using Lazydog.Model.Service;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Localization;
+using Lazydog.Model.Repo;
 
 namespace DaLazyDog.Controllers
 {
@@ -44,13 +45,13 @@ namespace DaLazyDog.Controllers
         [HttpGet]
         public IActionResult GetRandomExcuse()
         {
-            DbRepoInstantiator factory= HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IDbRepoInstantiator factory= HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             return Content(factory.GetExcuseRepo().GetRandomExcuse());
         }
         [HttpGet]
         public IActionResult GetExcuse()
         {
-            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             Excuse givenExcuse = new Excuse();
             try
             { 

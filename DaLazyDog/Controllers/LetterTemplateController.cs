@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Lazydog.Model.Repo;
 
 namespace DaLazyDog.Controllers
 {
@@ -18,7 +19,7 @@ namespace DaLazyDog.Controllers
         // GET: LetterTemplate
         public ActionResult Index()
         {
-            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             ViewBag.Excuses = factory.GetExcuseRepo().GetExcuseTitles();
             return View(factory.GetLetterTemplateRepo().GetLetterTemplates());
         }
@@ -26,14 +27,14 @@ namespace DaLazyDog.Controllers
         // GET: LetterTemplate/Details/5
         public ActionResult Details(int id)
         {
-            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             LetterTemplate template = factory.GetLetterTemplateRepo().GetLetterTemplateInHtmlForm(id);
             ViewBag.Excuse = "Flu";
             return View(template);
         }
         public ActionResult MakeLetter(int id,string excuseName)
         {
-            DbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(DbRepoInstantiator)) as DbRepoInstantiator;
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             LetterTemplate template = factory.GetLetterTemplateRepo().GetLetterTemplateInHtmlForm(id);
             ViewBag.Excuse = excuseName;
             return View(nameof(Details), template);

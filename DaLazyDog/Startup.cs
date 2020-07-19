@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using DaLazyDog.Resources;
 using Microsoft.Extensions.Logging;
 using DaLazyDog.Models;
+using Lazydog.Model.Repo;
 
 namespace DaLazyDog
 {
@@ -48,7 +49,7 @@ namespace DaLazyDog
                 options.DataAnnotationLocalizerProvider = (type, factory) =>
                     factory.Create(typeof(SharedResources));
             });
-            services.Add(new ServiceDescriptor(typeof(DbRepoInstantiator), new DbRepoInstantiator(Configuration["DefaultConnection"])));
+            services.Add(new ServiceDescriptor(typeof(IDbRepoInstantiator), new DbRepoInstantiator(Configuration["DefaultConnection"])));
 
             services.Configure<RequestLocalizationOptions>(options =>{
                     var supportedCultures = new List<CultureInfo>
@@ -70,10 +71,10 @@ namespace DaLazyDog
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
-
+            app.UseStatusCodePagesWithRedirects("/Home/Error?code={0}");
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Home/Error");
                 logger.LogInformation("Dev mode!");
             }
             else
