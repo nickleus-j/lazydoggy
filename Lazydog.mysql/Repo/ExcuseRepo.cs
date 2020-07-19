@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Lazydog.Model;
+using Lazydog.Model.Repo;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Logging;
 
 namespace Lazydog.mysql.Repo
 {
-    public class ExcuseRepo
+    public class ExcuseRepo : IExcuseRepo
     {
         #region
         private string script_GetExcuseWithLabel = @"SELECT * FROM excuse 

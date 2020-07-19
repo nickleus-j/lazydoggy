@@ -1,4 +1,5 @@
-﻿using Lazydog.mysql.Repo;
+﻿using Lazydog.Model.Repo;
+using Lazydog.mysql.Repo;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MySql.Data.MySqlClient;
 using System;
@@ -28,21 +29,21 @@ namespace Lazydog.mysql.test
         public void Test_HasExcuse()
         {
             DbRepoInstantiator instantiator = new DbRepoInstantiator(DbRepoInstantiatorTest.defaultConnectionString);
-            ExcuseRepo repo = instantiator.GetExcuseRepo();
+            IExcuseRepo repo = instantiator.GetExcuseRepo();
             Assert.IsTrue(repo.GetExcuses().Count > 0);
         }
         [TestMethod]
         public void Test_HasExcuse_Emergency()
         {
             DbRepoInstantiator instantiator = new DbRepoInstantiator(DbRepoInstantiatorTest.defaultConnectionString);
-            ExcuseRepo repo = instantiator.GetExcuseRepo();
+            IExcuseRepo repo = instantiator.GetExcuseRepo();
             Assert.IsTrue(repo.GetExcuses("Emergency").Count > 0);
         }
         [TestMethod]
         public void Test_GetAnExcuse()
         {
             DbRepoInstantiator instantiator = new DbRepoInstantiator(DbRepoInstantiatorTest.defaultConnectionString);
-            ExcuseRepo repo = instantiator.GetExcuseRepo();
+            IExcuseRepo repo = instantiator.GetExcuseRepo();
             Assert.IsTrue(repo.GetAnExcuse().ExcuseTitle.Length>0);
         }
     }

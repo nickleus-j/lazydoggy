@@ -6,10 +6,11 @@ using System.Text;
 using Lazydog.Model;
 using MySql.Data.MySqlClient;
 using Lazydog.Model.Service;
+using Lazydog.Model.Repo;
 
 namespace Lazydog.mysql.Repo
 {
-    public class LetterTemplateRepo
+    public class LetterTemplateRepo : ILetterTemplateRepo
     {
         private DbConnection connection;
         public ILogger Logger;

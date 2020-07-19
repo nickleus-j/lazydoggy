@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Lazydog.Model.Repo;
 using Lazydog.mysql.Repo;
 using Microsoft.Extensions.Logging;
 
@@ -9,7 +10,7 @@ namespace Lazydog.mysql
     /// <summary>
     /// Has method the generate objects that interact data with the Mysql DB
     /// </summary>
-    public class DbRepoInstantiator
+    public class DbRepoInstantiator : IDbRepoInstantiator
     {
         public string ConnectionString { get; set; }
         public DbRepoInstantiator(string connectionString)
@@ -21,7 +22,7 @@ namespace Lazydog.mysql
         /// </summary>
         /// <param name="givenLogger">Optional Logger object</param>
         /// <returns></returns>
-        public ExcuseRepo GetExcuseRepo(ILogger givenLogger = null)
+        public IExcuseRepo GetExcuseRepo(ILogger givenLogger = null)
         {
             DbContext dbContext = new DbContext(ConnectionString);
             return new ExcuseRepo(dbContext.GetConnection());
@@ -31,7 +32,7 @@ namespace Lazydog.mysql
         /// </summary>
         /// <param name="givenLogger"></param>
         /// <returns></returns>
-        public CultureRepo GetCultureRepo(ILogger givenLogger = null)
+        public ICultureRepo GetCultureRepo(ILogger givenLogger = null)
         {
             DbContext dbContext = new DbContext(ConnectionString);
             return new CultureRepo(dbContext.GetConnection());
@@ -41,7 +42,7 @@ namespace Lazydog.mysql
         /// </summary>
         /// <param name="givenLogger"></param>
         /// <returns></returns>
-        public LetterTemplateRepo GetLetterTemplateRepo(ILogger givenLogger = null)
+        public ILetterTemplateRepo GetLetterTemplateRepo(ILogger givenLogger = null)
         {
             DbContext dbContext = new DbContext(ConnectionString);
             return new LetterTemplateRepo(dbContext.GetConnection(), givenLogger);

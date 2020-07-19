@@ -5,10 +5,11 @@ using Lazydog.Model;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Logging;
+using Lazydog.Model.Repo;
 
 namespace Lazydog.mysql.Repo
 {
-    public class CultureRepo
+    public class CultureRepo : ICultureRepo
     {
         private DbConnection connection;
         public ILogger Logger;
