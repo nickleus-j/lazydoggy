@@ -10,5 +10,6 @@ namespace Lazydog.Model.Repo
         ICultureRepo GetCultureRepo(ILogger givenLogger = null);
         IExcuseRepo GetExcuseRepo(ILogger givenLogger = null);
         ILetterTemplateRepo GetLetterTemplateRepo(ILogger givenLogger = null);
+        IExcuseAlterationRepo GetAlternateExcuseRepo(ILogger givenLogger = null);
     }
 }

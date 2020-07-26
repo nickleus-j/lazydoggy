@@ -39,16 +39,16 @@ namespace DaLazyDog
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            #region snippet1
+            #region CultureLocalizer register
             services.AddSingleton<CultureLocalizer>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-
-            #endregion
             services.AddMvc().AddViewLocalization(o => o.ResourcesPath = "Resources")
                 .AddDataAnnotationsLocalization(options => {
-                options.DataAnnotationLocalizerProvider = (type, factory) =>
-                    factory.Create(typeof(SharedResources));
-            });
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        factory.Create(typeof(SharedResources));
+                });
+            #endregion
+
             services.Add(new ServiceDescriptor(typeof(IDbRepoInstantiator), new DbRepoInstantiator(Configuration["DefaultConnection"])));
 
             services.Configure<RequestLocalizationOptions>(options =>{
@@ -67,9 +67,7 @@ namespace DaLazyDog
 
                 });
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        private void configureErrorHandling(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             app.UseStatusCodePagesWithRedirects("/Home/Error?code={0}");
             if (env.IsDevelopment())
@@ -84,6 +82,11 @@ namespace DaLazyDog
                 app.UseHsts();
             }
 
+        }
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        {
+            configureErrorHandling(app, env, logger);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

@@ -47,5 +47,11 @@ namespace Lazydog.mysql
             DbContext dbContext = new DbContext(ConnectionString);
             return new LetterTemplateRepo(dbContext.GetConnection(), givenLogger);
         }
+
+        public IExcuseAlterationRepo GetAlternateExcuseRepo(ILogger givenLogger = null)
+        {
+            DbContext dbContext = new DbContext(ConnectionString);
+            return new ExcuseAlterationRepo(dbContext.GetConnection(), givenLogger);
+        }
     }
 }

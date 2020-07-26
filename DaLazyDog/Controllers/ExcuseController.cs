@@ -100,5 +100,11 @@ namespace DaLazyDog.Controllers
             IList<Excuse> givenExcuses = factory.GetExcuseRepo().GetExcuses(category);
             return View(nameof(Index),givenExcuses);
         }
+        [HttpGet]
+        public IActionResult AlternateTitle(string title)
+        {
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
+            return Json(factory.GetAlternateExcuseRepo().GetExcuseAlteration(title));
+        }
     }
 }
