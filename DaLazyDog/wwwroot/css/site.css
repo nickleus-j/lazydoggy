@@ -95,3 +95,9 @@ a.primary-btn.btn, .primary-btn.btn {
 a.second-prim-btn.btn, .second-prim-btn.btn {
     background: #122f52
 }
+li.clickable {
+    cursor: pointer;
+    color: #3030f1;
+    list-style: square;
+    font-size: 1.2rem;
+}
