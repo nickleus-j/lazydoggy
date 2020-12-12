@@ -10,7 +10,7 @@
         app.controller('Details', function ($scope) {
 
             $scope.generateLetter = function () {
-                var contents;
+                let contents;
                 contents = $("div dl .letter-content").clone();
                 contents.find("br").each(function (index, elem) { elem.replaceWith("\n"); });
                 contents.find("select").each(function (index, elem) { elem.replaceWith(elem.value); });
@@ -30,8 +30,8 @@
                     my_selects = this.find('select').add(this.filter('select')),
                     result_selects = result.find('select').add(result.filter('select'));
 
-                for (var i = 0, l = my_textareas.length; i < l; ++i) { $(result_textareas[i]).val($(my_textareas[i]).val()); }
-                for (var j = 0, k = my_selects.length; j < k; ++j) result_selects[j].selectedIndex = my_selects[j].selectedIndex;
+                for (let i = 0, l = my_textareas.length; i < l; ++i) { $(result_textareas[i]).val($(my_textareas[i]).val()); }
+                for (let j = 0, k = my_selects.length; j < k; ++j) result_selects[j].selectedIndex = my_selects[j].selectedIndex;
 
                 return result;
             };

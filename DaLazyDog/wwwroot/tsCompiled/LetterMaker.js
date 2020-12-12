@@ -1,5 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Translate_1 = require("./Translate");
 var LetterMaker = (function () {
     function LetterMaker(item) {
+        this.Translator = new Translate_1.Translate();
     }
     LetterMaker.prototype.makeLetter = function (templateText, oldText, replacement, ddlData) {
         var content;
@@ -12,7 +16,7 @@ var LetterMaker = (function () {
         Object.keys(ddlData).forEach(function (key) {
             result = result.replace(new RegExp("(s|)+([|]+" + key + ")"), maker.createSelectTagFromArray(ddlData[key]));
         });
-        var defaultArr = ["Thanks", "Sincerly"];
+        var defaultArr = [this.Translator.translate("thanks"), this.Translator.translate("sincerly")];
         return this.replaceSubStringMatchingregEx(new RegExp("(\s|)+([\|]+[a-zA-Z]*)"), result, maker.createSelectTagFromArray(defaultArr));
     };
     LetterMaker.prototype.createSelectTagFromArray = function (arr) {

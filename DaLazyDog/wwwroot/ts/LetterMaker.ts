@@ -1,5 +1,7 @@
-﻿class LetterMaker {
-    constructor(item: string) { }
+﻿import { Translate } from "./Translate";
+class LetterMaker {
+    Translator: Translate;
+    constructor(item: string) { this.Translator = new Translate(); }
     makeLetter(templateText: string, oldText: string, replacement: string,ddlData:object): string {
         let content: string;
         content = this.formatTextForGeneratedLetters(templateText.replace(oldText, replacement));
@@ -11,7 +13,7 @@
         Object.keys(ddlData).forEach(function (key) {
             result = result.replace(new RegExp(`(\s|)+([\|]+${key})`), maker.createSelectTagFromArray(ddlData[key]));
         });
-        let defaultArr: string[] = ["Thanks","Sincerly"];
+        let defaultArr: string[] = [this.Translator.translate("thanks"), this.Translator.translate("sincerly")];
         return this.replaceSubStringMatchingregEx(new RegExp("(\s|)+([\|]+[a-zA-Z]*)"), result, maker.createSelectTagFromArray(defaultArr));
     }
     createSelectTagFromArray(arr:  unknown[]): string {

@@ -21,6 +21,7 @@
     <Content Remove="wwwroot\js\ExcuseLetter.ts" />
     <Content Remove="wwwroot\ts\ExcusesPanel.ts" />
     <Content Remove="wwwroot\ts\LetterMaker.ts" />
+    <Content Remove="wwwroot\ts\Translate.ts" />
   </ItemGroup>
 
   <ItemGroup>

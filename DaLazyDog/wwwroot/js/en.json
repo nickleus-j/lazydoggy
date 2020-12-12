@@ -1,0 +1,11 @@
+﻿{
+    "contact":"Contact form",
+    "email": "Email",
+    "password": "Password",
+    "subject": "Subject",
+    "message": "Message",
+    "sincerly":"-Sincerly",
+    "thanks":"Thanks :)",
+    "excusecolon":"Excuse: ",
+    "letterTemplate":"Letter Template"
+}
