@@ -79,5 +79,9 @@ namespace DaLazyDog.Controllers
         {
             return View();
         }
+        public IActionResult Animations()
+        {
+            return View();
+        }
     }
 }

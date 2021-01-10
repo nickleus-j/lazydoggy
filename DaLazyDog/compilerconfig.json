@@ -6,5 +6,9 @@
   {
     "outputFile": "wwwroot/css/GeneratedText.css",
     "inputFile": "wwwroot/css/GeneratedText.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/CommonAnimations.css",
+    "inputFile": "wwwroot/css/CommonAnimations.scss"
   }
 ]

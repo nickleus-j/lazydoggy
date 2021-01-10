@@ -1,0 +1,77 @@
+﻿@keyframes example-panel {
+  from {
+    background-color: red; }
+  to {
+    background-color: yellow;
+    border-radius: 15px,7px; } }
+
+@keyframes contrast-panel {
+  from {
+    background-color: crimson;
+    color: #edeffe;
+    font-size: inherit;
+    text-align: right; }
+  to {
+    background-color: lime;
+    color: navy;
+    font-size: larger;
+    text-align: inherit; } }
+
+@keyframes left-grow {
+  from {
+    background-color: #4a2244;
+    color: #edeffe;
+    font-size: inherit;
+    width: 10%;
+    height: 100px; }
+  to {
+    background-color: #5d1142;
+    color: #eaebea;
+    font-size: larger;
+    width: 80%;
+    height: 200px; } }
+
+@keyframes right-shrink {
+  from {
+    background-color: #9e0056;
+    color: #edeffe;
+    font-size: inherit;
+    width: 90%;
+    height: 50px; }
+  to {
+    background-color: #98459f;
+    color: #eaebea;
+    font-size: larger;
+    width: 20%;
+    height: 200px; } }
+
+div.ry {
+  height: 100px;
+  background-color: seagreen;
+  animation-name: example-panel;
+  animation-duration: 4s; }
+
+div.contrast {
+  height: 100px;
+  background-color: lime;
+  color: navy;
+  animation-name: contrast-panel;
+  animation-duration: 8s; }
+
+div.split-left {
+  background-color: #5d1142;
+  color: #eaebea;
+  font-size: larger;
+  width: 80%;
+  height: 200px;
+  animation-name: left-grow;
+  animation-duration: 5s; }
+
+div.split-right {
+  background-color: #98459f;
+  color: #eaebea;
+  font-size: larger;
+  width: 20%;
+  height: 200px;
+  animation-name: right-shrink;
+  animation-duration: 5s; }
