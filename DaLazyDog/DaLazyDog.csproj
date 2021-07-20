@@ -19,8 +19,11 @@
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
     <Content Remove="wwwroot\js\ExcuseLetter.ts" />
+    <Content Remove="wwwroot\ts\app.ts" />
     <Content Remove="wwwroot\ts\ExcusesPanel.ts" />
     <Content Remove="wwwroot\ts\LetterMaker.ts" />
+    <Content Remove="wwwroot\ts\SimpleInterest.ts" />
+    <Content Remove="wwwroot\ts\SimpleInterestCompo.ts" />
     <Content Remove="wwwroot\ts\Translate.ts" />
   </ItemGroup>
 

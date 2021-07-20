@@ -1,19 +1,18 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "noImplicitAny": false,
     "noEmitOnError": true,
     "removeComments": true,
     "sourceMap": true,
-
     "outDir": "../tsCompiled",
+    "allowJs": true,
     "target": "es5"
   },
 
   "exclude": [
     "node_modules",
     "wwwroot"
-  ],
-  "types": [ "node" ],
-  "typeRoots": [ "../node_modules/@types" ]
+  ]
 }
 

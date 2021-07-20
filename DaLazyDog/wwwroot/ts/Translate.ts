@@ -17,5 +17,9 @@
         }
         xrhFile.send();
         return key;
+    };
+    say(): string {
+        console.log("hello");
+        return "hello";
     }
 }

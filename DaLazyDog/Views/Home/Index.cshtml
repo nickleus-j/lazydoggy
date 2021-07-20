@@ -11,10 +11,11 @@
         padding: 25px;
         border-radius: 20px;
     }
-    .tab-content ul li {
-        list-style: none;
-        margin-bottom: 5px;
-    }
+
+        .tab-content ul li {
+            list-style: none;
+            margin-bottom: 5px;
+        }
 </style>
 <p class="hidden loading-text">@Localizer["Loading"]</p>
 <div class="tab-content" ng-app="lazyDog" ng-controller="Index">
@@ -25,7 +26,7 @@
             @Localizer["GetExcuse"]
         </a>
         <hr />
-        
+
     </div>
     <p><h2 class="excuse display-4"></h2></p>
     <div class="row">
@@ -33,7 +34,7 @@
             <p class="excuse-description"></p>
         </div>
         <div class="col-xs-12 col-sm-4">
-            
+
         </div>
     </div>
     <div class="row hidden link-to-letter-maker">
@@ -59,4 +60,5 @@
         });
         Ajaxes.UiTexts.Loading = $("p.loading-text").text();
     </script>
+    
 }

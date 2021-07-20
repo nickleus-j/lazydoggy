@@ -19,6 +19,11 @@ var Translate = (function () {
         xrhFile.send();
         return key;
     };
+    ;
+    Translate.prototype.say = function () {
+        console.log("hello");
+        return "hello";
+    };
     Translate.language = "en";
     return Translate;
 }());
