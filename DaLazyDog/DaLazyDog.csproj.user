@@ -12,6 +12,7 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <NameOfLastUsedPublishProfile>ulazydog - Web Deploy</NameOfLastUsedPublishProfile>
     <ActiveDebugProfile>DaLazyDog</ActiveDebugProfile>
+    <ToolsVersionPromptShown>3.1</ToolsVersionPromptShown>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

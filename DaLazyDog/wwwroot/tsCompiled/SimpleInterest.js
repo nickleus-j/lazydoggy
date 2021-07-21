@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SimpleInterest = void 0;
 var SimpleInterest = (function () {
     function SimpleInterest(p, i, y) {
         this.Principal = p;

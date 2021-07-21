@@ -17,6 +17,7 @@ using DaLazyDog.Resources;
 using Microsoft.Extensions.Logging;
 using DaLazyDog.Models;
 using Lazydog.Model.Repo;
+using Microsoft.Extensions.Hosting;
 
 namespace DaLazyDog
 {
@@ -38,7 +39,8 @@ namespace DaLazyDog
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddControllersWithViews();
+            //services.AddRazorPages();
             #region CultureLocalizer register
             services.AddSingleton<CultureLocalizer>();
             services.AddLocalization(options => options.ResourcesPath = "Resources");
@@ -67,49 +69,79 @@ namespace DaLazyDog
 
                 });
         }
-        private void configureErrorHandling(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        //private void configureErrorHandling(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        //{
+        //    app.UseStatusCodePagesWithRedirects("/Home/Error?code={0}");
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseExceptionHandler("/Home/Error");
+        //        logger.LogInformation("Dev mode!");
+        //    }
+        //    else
+        //    {
+        //        app.UseExceptionHandler("/Home/Error");
+        //        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        //        app.UseHsts();
+        //    }
+
+        //}
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        //{
+        //    configureErrorHandling(app, env, logger);
+        //    //app.UseCookiePolicy();
+        //    var supportedCultures = new[]
+        //    {
+        //        new CultureInfo("en-US"),
+        //        new CultureInfo("es"),
+        //    };
+        //    app.UseRequestLocalization(new RequestLocalizationOptions
+        //    {
+        //        DefaultRequestCulture = new RequestCulture("en-US"),
+        //        // Formatting numbers, dates, etc.
+        //        SupportedCultures = supportedCultures,
+        //        // UI strings that we have localized.
+        //        SupportedUICultures = supportedCultures
+        //    });
+        //    app.UseHttpsRedirection();
+        //    app.UseStaticFiles();
+
+        //    app.UseRouting();
+
+        //    app.UseAuthorization();
+
+        //    app.UseEndpoints(endpoints =>
+        //    {
+        //        endpoints.MapRazorPages();
+        //    });
+        //    logger.LogInformation("App started");
+        //}
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseStatusCodePagesWithRedirects("/Home/Error?code={0}");
             if (env.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
-                logger.LogInformation("Dev mode!");
+                app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-        }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
-        {
-            configureErrorHandling(app, env, logger);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
-            var supportedCultures = new[]
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                new CultureInfo("en-US"),
-                new CultureInfo("es"),
-            };
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture("en-US"),
-                // Formatting numbers, dates, etc.
-                SupportedCultures = supportedCultures,
-                // UI strings that we have localized.
-                SupportedUICultures = supportedCultures
-            });
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            logger.LogInformation("App started");
         }
     }
 }
