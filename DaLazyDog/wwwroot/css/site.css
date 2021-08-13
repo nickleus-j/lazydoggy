@@ -1,10 +1,24 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+.tab-content ul {
+    font-size: 14px;
+    background: lavender;
+    padding: 25px;
+    border-radius: 20px;
+}
 
+    .tab-content ul li {
+        list-style: none;
+        margin-bottom: 5px;
+    }
+a.nav-link.text-dark:hover{
+    background:#dfddde;
+    font-size:110%;
+}
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 .hidden{
     display:none;
