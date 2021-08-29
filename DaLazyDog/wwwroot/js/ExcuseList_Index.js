@@ -6,7 +6,7 @@ function checkWork() {
     var arr = [];
 
     $(".checkbox:checked").each(function (index, item) {
-        arr.push(item.value);
+        arr.push(item.value.trim());
     });
     if (arr.length > 0) {
         $(".labels-cell").parent().addClass("hidden");
@@ -16,7 +16,7 @@ function checkWork() {
     }
     $(".labels-cell").each(function (index, item) {
         for (var ctr = 0; ctr < arr.length; ctr++) {
-            if (item.innerText.indexOf(arr[ctr]) >= 0) {
+            if (item.innerText.trim().indexOf(arr[ctr]) >= 0) {
                 $(item.parentElement).removeClass("hidden");
             }
         }
@@ -27,8 +27,8 @@ function prepereFilterList(text) {
     var finalizedItems = [];
     for (var ctr = 0; ctr < items.length; ctr++) {
         var currentItem = items[ctr];
-        if (finalizedItems.indexOf(currentItem) < 0) {
-            finalizedItems.push(currentItem);
+        if (finalizedItems.indexOf(currentItem.trim()) < 0 && currentItem.trim().length>0) {
+            finalizedItems.push(currentItem.trim());
             appendCheckboxListItem(currentItem, ".filter-form ul");
         }
     }

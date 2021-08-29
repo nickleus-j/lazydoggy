@@ -27,47 +27,30 @@
         </ul>
     </fieldset>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ExcuseTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExcuseDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Labels)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExcuseTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExcuseDescription)
-                </td>
-                <td class="labels-cell">
 
-                    @for (int ctr = 0; ctr < item.LabelArr.Length; ctr++)
-                    {
-                        <a href="#">@item.LabelArr[ctr]</a>
-                    }
-                </td>
-                <td>
+<div class="row">
+@foreach (var item in Model)
+{
+    <div class="card col-xs-6 col-sm-4">
+        <h3 class="text-center">@Html.DisplayFor(modelItem => item.ExcuseTitle)</h3>
+        <p class="text-left float-left"> @Html.DisplayFor(modelItem => item.ExcuseDescription)
+            
+        </p>
+        <p class="text-right float-right labels-cell">
+            @for (int ctr = 0; ctr < item.LabelArr.Length; ctr++)
+            {
+                <a class="text-small" href="#">@item.LabelArr[ctr]</a>
+            }
+		</p>
+        <p class="text-center">
+            @Html.ActionLink(Localizer.GetString("MakeLetter"), "MakeLetter", "LetterTemplate", new { id = 1, excuseName = item.ExcuseTitle },  new { @class = "btn btn-secondary" }) 
+		</p>
+        
+    </div>
+}
+</div>
 
-                    @Html.ActionLink(Localizer.GetString("MakeLetter"), "MakeLetter", "LetterTemplate", new { id = 1, excuseName = item.ExcuseTitle }, null) |
-                 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
 @section Scripts{
     <script src="~/js/ExcuseList_Index.js"></script>
     <script>
