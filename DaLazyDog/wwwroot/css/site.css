@@ -129,6 +129,11 @@ li.clickable {
     list-style: square;
     font-size: 1.2rem;
 }
+.another-way li.clickable {
+    list-style: none;
+    color: #349921;
+    text-decoration: underline overline #408a87;
+}
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
