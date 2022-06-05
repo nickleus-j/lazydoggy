@@ -14,7 +14,7 @@ var LetterMaker = (function () {
         var result = oldText;
         var maker = this;
         Object.keys(ddlData).forEach(function (key) {
-            result = result.replace(new RegExp("(s|)+([|]+" + key + ")"), maker.createSelectTagFromArray(ddlData[key]));
+            result = result.replace(new RegExp("(s|)+([|]+".concat(key, ")")), maker.createSelectTagFromArray(ddlData[key]));
         });
         var defaultArr = [this.Translator.translate("thanks"), this.Translator.translate("sincerly")];
         return this.replaceSubStringMatchingregEx(new RegExp("(\s|)+([\|]+[a-zA-Z]*)"), result, maker.createSelectTagFromArray(defaultArr));
@@ -22,7 +22,7 @@ var LetterMaker = (function () {
     LetterMaker.prototype.createSelectTagFromArray = function (arr) {
         var result = "<select class='form-control'>";
         for (var ctr = 0; ctr < arr.length; ctr++) {
-            result = result.concat("<option>" + arr[ctr] + "</option>");
+            result = result.concat("<option>".concat(arr[ctr], "</option>"));
         }
         return result.concat("</select>");
     };

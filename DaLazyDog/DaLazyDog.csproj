@@ -14,6 +14,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <Authors>Nickleus Jimenez</Authors>
     <UserSecretsId>b0ba7d74-5056-49a3-9e1f-d96f60495149</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,11 +38,12 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="6.0.0" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
     <PackageReference Include="Serilog" Version="2.11.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
