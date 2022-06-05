@@ -17,3 +17,6 @@
 /Lazydog.Model/bin/Release/netstandard2.0
 /Lazydog.mysql/bin/Release/netstandard2.0
 /DaLazyDog/Properties/PublishProfiles
+/DaLazyDog/bin/Debug/net6.0
+/Lazydog.model.Service.Test/bin/Debug/net6.0
+/Lazydog.mysql.test/bin/Debug/net6.0

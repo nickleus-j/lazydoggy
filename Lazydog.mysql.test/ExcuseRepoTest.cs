@@ -46,5 +46,19 @@ namespace Lazydog.mysql.test
             IExcuseRepo repo = instantiator.GetExcuseRepo();
             Assert.IsTrue(repo.GetAnExcuse().ExcuseTitle.Length>0);
         }
+        [TestMethod]
+        public void Test_GetExcuseTitles()
+        {
+            DbRepoInstantiator instantiator = new DbRepoInstantiator(DbRepoInstantiatorTest.defaultConnectionString);
+            IExcuseRepo repo = instantiator.GetExcuseRepo();
+            Assert.IsTrue(repo.GetExcuseTitles().Count>0);
+        }
+        [TestMethod]
+        public void Test_GetRandomExcuse()
+        {
+            DbRepoInstantiator instantiator = new DbRepoInstantiator(DbRepoInstantiatorTest.defaultConnectionString);
+            IExcuseRepo repo = instantiator.GetExcuseRepo();
+            Assert.IsFalse(String.IsNullOrEmpty(repo.GetRandomExcuse()));
+        }
     }
 }
