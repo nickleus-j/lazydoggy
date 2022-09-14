@@ -20,3 +20,6 @@
 /DaLazyDog/bin/Debug/net6.0
 /Lazydog.model.Service.Test/bin/Debug/net6.0
 /Lazydog.mysql.test/bin/Debug/net6.0
+/DaLazyDog/bin/Release/net6.0
+/Lazydog.Model/bin/Release/netstandard2.1
+/Lazydog.mysql/bin/Release/netstandard2.1
