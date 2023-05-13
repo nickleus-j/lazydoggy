@@ -17,7 +17,8 @@ namespace Lazydog.mysql.Repo
         private string script_GetExcuses = @"SELECT * FROM excuse ORDER BY ExcuseTitle";
         private string script_GetRandomExcuse = "SELECT * FROM excuse order by RAND() LIMIT 1";
         private string script_GetExcusesTitles = @"SELECT ExcuseTitle FROM excuse ORDER BY ExcuseTitle";
-        
+        private string script_InsertExcuse=@"insert into excuse (ExcuseTitle, ExcuseDescription, ExcuseLabels) 
+            VALUES (@Title, @Description, @Labels); ";
         #endregion
         private DbConnection connection;
         public ILogger Logger;
@@ -191,6 +192,26 @@ namespace Lazydog.mysql.Repo
             givenExcuse.ExcuseDescription = reader["ExcuseDescription"].ToString();
             givenExcuse.Labels = reader["ExcuseLabels"].ToString();
             return givenExcuse;
+        }
+        public void AddExcuse(Excuse excuse)
+        {
+            using (connection)
+            {
+                connection.Open();
+                DbCommand cmd = new MySqlCommand(this.script_InsertExcuse, (MySqlConnection)connection);
+                cmd.Parameters.Add(new MySqlParameter("@Title", excuse.ExcuseTitle));
+                cmd.Parameters.Add(new MySqlParameter("@Description", excuse.ExcuseDescription));
+                cmd.Parameters.Add(new MySqlParameter("@Labels", excuse.Labels));
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                       
+
+                    }
+                }
+                connection.Close();
+            }
         }
         public void Log(LogLevel givenLogLevel,string msg)
         {

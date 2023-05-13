@@ -27,11 +27,25 @@ namespace DaLazyDog.Controllers
         }
 
         // GET: Excuse/Create
+        
         public ActionResult Create()
         {
             return View();
         }
-
+        [HttpPost]
+        public ActionResult Add([FromBody] Excuse excuse)
+        {
+            try
+            {
+                IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
+                factory.GetExcuseRepo().AddExcuse(excuse);
+            }
+            catch
+            {
+                return BadRequest(excuse);
+            }
+            return Ok(excuse);
+        }
         // POST: Excuse/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

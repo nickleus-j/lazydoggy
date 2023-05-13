@@ -12,5 +12,6 @@ namespace Lazydog.Model.Repo
         List<string> GetExcuseTitles();
         string GetRandomExcuse();
         void Log(LogLevel givenLogLevel, string msg);
+        void AddExcuse(Excuse excuse);
     }
 }
