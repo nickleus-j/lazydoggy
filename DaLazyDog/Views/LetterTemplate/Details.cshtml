@@ -43,12 +43,15 @@
    
 </div>
 
-
+<div class="otherTemplates col-xs-6">
+    
+</div>
 @section Scripts
     {
     <script src="~/lib/angular.js/angular.min.js"></script>
     <script src="~/js/GenerateLetterPage.js"></script>
     <script>
+        
         function appendAlternativeExcuseTitle(title) {
             var item = $("<li></li>").addClass("clickable");
             item.text(title);
@@ -64,12 +67,19 @@
                     appendAlternativeExcuseTitle(data[ctr].alternateTitle)
                 }
             });
+            
         }
         LetterGenerator.init("@Html.Raw(ViewBag.Excuse)");
         
         
         getAlternates("@Html.Raw(ViewBag.Excuse)");
-
+        $.get("/LetterTemplate/ListOtherTemplates", { "id": @Model.ID }, function (result) {
+            document.querySelector(".otherTemplates").innerHTML = result;
+            $('input[name="Excuse"]').val("@Html.Raw(ViewBag.Excuse)");
+            $(".make-letter").click(function (item) {
+                $(this).attr("href", $(this).attr("href") + "@Html.Raw(ViewBag.Excuse)");
+            });
+        });
     </script>
 }
 @section OgTags{

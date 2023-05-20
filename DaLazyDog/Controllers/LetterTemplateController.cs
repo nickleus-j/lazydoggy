@@ -23,7 +23,21 @@ namespace DaLazyDog.Controllers
             ViewBag.Excuses = factory.GetExcuseRepo().GetExcuseTitles();
             return View(factory.GetLetterTemplateRepo().GetLetterTemplates());
         }
-
+        public ActionResult List()
+        {
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
+            return PartialView(factory.GetLetterTemplateRepo().GetLetterTemplates());
+        }
+        public ActionResult ListOtherTemplates(int id)
+        {
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
+            return PartialView(nameof(List), factory.GetLetterTemplateRepo().GetLetterTemplates().Where(item => item.ID != id && item.Active));
+        }
+        public JsonResult GetExcept(int id)
+        {
+            IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
+            return Json(factory.GetLetterTemplateRepo().GetLetterTemplates().Where(item => item.ID != id&&item.Active));
+        }
         // GET: LetterTemplate/Details/5
         public ActionResult Details(int id)
         {
@@ -37,6 +51,7 @@ namespace DaLazyDog.Controllers
             IDbRepoInstantiator factory = HttpContext.RequestServices.GetService(typeof(IDbRepoInstantiator)) as IDbRepoInstantiator;
             LetterTemplate template = factory.GetLetterTemplateRepo().GetLetterTemplateInHtmlForm(id);
             ViewBag.Excuse = excuseName;
+            ViewBag.CurrentTemplateId = id;
             return View(nameof(Details), template);
         }
         // GET: LetterTemplate/Create
