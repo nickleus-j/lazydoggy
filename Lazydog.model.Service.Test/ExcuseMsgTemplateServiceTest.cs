@@ -103,7 +103,7 @@ namespace Lazydog.model.Service.Test
 
             sirMamOptions.Add("sir");
             sirMamOptions.Add("mam");
-            OptionsList.Add("sirmam", sirMamOptions);
+            OptionsList.Add("sir/mam", sirMamOptions);
             string result = msgService.GenerateHtmlOfTemplate(sampleTemplate, OptionsList);
             Assert.IsTrue(result.Contains("mam"));
         }//Thanks
@@ -120,7 +120,7 @@ namespace Lazydog.model.Service.Test
 
             sirMamOptions.Add("sir");
             sirMamOptions.Add("mam");
-            OptionsList.Add("sirmam", sirMamOptions);
+            OptionsList.Add("sir/mam", sirMamOptions);
             string result = msgService.GenerateHtmlOfTemplate(sampleTemplate, OptionsList);
             Assert.IsTrue(result.Contains("Thanks"));
         }
